@@ -13,7 +13,11 @@
 		37F58A842111AE380020DB93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F58A822111AE380020DB93 /* Main.storyboard */; };
 		37F58A862111AE390020DB93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37F58A852111AE390020DB93 /* Assets.xcassets */; };
 		37F58A892111AE390020DB93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F58A872111AE390020DB93 /* LaunchScreen.storyboard */; };
-		37F58A942111AE3A0020DB93 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F58A932111AE3A0020DB93 /* RecipleaseTests.swift */; };
+		37FA2BF02112E2B000739C8C /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2BEF2112E2B000739C8C /* Search.swift */; };
+		37FA2BF22112E2F100739C8C /* YummlyProtocole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2BF12112E2F100739C8C /* YummlyProtocole.swift */; };
+		37FA2BF42112E6EC00739C8C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2BF32112E6EC00739C8C /* Constant.swift */; };
+		37FA2BF62112EEF800739C8C /* TestSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2BF52112EEF800739C8C /* TestSearch.swift */; };
+		37FA2BFA2112F4A500739C8C /* SearchVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2BF92112F4A500739C8C /* SearchVCDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +40,12 @@
 		37F58A882111AE390020DB93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37F58A8A2111AE390020DB93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37F58A8F2111AE3A0020DB93 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		37F58A932111AE3A0020DB93 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		37F58A952111AE3A0020DB93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37FA2BEF2112E2B000739C8C /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		37FA2BF12112E2F100739C8C /* YummlyProtocole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyProtocole.swift; sourceTree = "<group>"; };
+		37FA2BF32112E6EC00739C8C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		37FA2BF52112EEF800739C8C /* TestSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSearch.swift; sourceTree = "<group>"; };
+		37FA2BF92112F4A500739C8C /* SearchVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +99,8 @@
 		37F58A922111AE3A0020DB93 /* RecipleaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				37F58A932111AE3A0020DB93 /* RecipleaseTests.swift */,
 				37F58A952111AE3A0020DB93 /* Info.plist */,
+				37FA2BF52112EEF800739C8C /* TestSearch.swift */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -100,6 +108,9 @@
 		37F58A9E2111AE4B0020DB93 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				37FA2BEF2112E2B000739C8C /* Search.swift */,
+				37FA2BF12112E2F100739C8C /* YummlyProtocole.swift */,
+				37FA2BF32112E6EC00739C8C /* Constant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +120,7 @@
 			children = (
 				37F58A7E2111AE380020DB93 /* FavoriteViewController.swift */,
 				37F58A802111AE380020DB93 /* SearchViewController.swift */,
+				37FA2BF92112F4A500739C8C /* SearchVCDataSource.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -184,6 +196,7 @@
 					};
 					37F58A8E2111AE3A0020DB93 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 						TestTargetID = 37F58A782111AE380020DB93;
 					};
 				};
@@ -233,8 +246,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				37F58A812111AE380020DB93 /* SearchViewController.swift in Sources */,
+				37FA2BFA2112F4A500739C8C /* SearchVCDataSource.swift in Sources */,
+				37FA2BF02112E2B000739C8C /* Search.swift in Sources */,
 				37F58A7D2111AE380020DB93 /* AppDelegate.swift in Sources */,
+				37FA2BF22112E2F100739C8C /* YummlyProtocole.swift in Sources */,
 				37F58A7F2111AE380020DB93 /* FavoriteViewController.swift in Sources */,
+				37FA2BF42112E6EC00739C8C /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37F58A942111AE3A0020DB93 /* RecipleaseTests.swift in Sources */,
+				37FA2BF62112EEF800739C8C /* TestSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +448,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q9ND38V22J;
 				INFOPLIST_FILE = RecipleaseTests/Info.plist;
@@ -441,6 +459,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolasjaved.RecipleaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reciplease.app/Reciplease";
@@ -452,6 +471,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q9ND38V22J;
 				INFOPLIST_FILE = RecipleaseTests/Info.plist;
