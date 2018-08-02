@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37112B93211362AF007C1083 /* YummlyIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37112B92211362AF007C1083 /* YummlyIDs.swift */; };
 		37F58A7D2111AE380020DB93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F58A7C2111AE380020DB93 /* AppDelegate.swift */; };
 		37F58A7F2111AE380020DB93 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F58A7E2111AE380020DB93 /* FavoriteViewController.swift */; };
 		37F58A812111AE380020DB93 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F58A802111AE380020DB93 /* SearchViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37112B92211362AF007C1083 /* YummlyIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YummlyIDs.swift; sourceTree = "<group>"; };
 		37F58A792111AE380020DB93 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F58A7C2111AE380020DB93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37F58A7E2111AE380020DB93 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37112B9121136281007C1083 /* PrivateFile */ = {
+			isa = PBXGroup;
+			children = (
+				37112B92211362AF007C1083 /* YummlyIDs.swift */,
+			);
+			path = PrivateFile;
+			sourceTree = "<group>";
+		};
 		37F58A702111AE380020DB93 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 		37F58A7B2111AE380020DB93 /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
+				37112B9121136281007C1083 /* PrivateFile */,
 				37F58AA12111AE690020DB93 /* SupportingFiles */,
 				37F58AA02111AE4F0020DB93 /* View */,
 				37F58A9F2111AE4E0020DB93 /* ViewController */,
@@ -300,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37FA2C0B21132EE400739C8C /* YummlyAPI.swift in Sources */,
+				37112B93211362AF007C1083 /* YummlyIDs.swift in Sources */,
 				37F58A812111AE380020DB93 /* SearchViewController.swift in Sources */,
 				37FA2BFA2112F4A500739C8C /* SearchVCDataSource.swift in Sources */,
 				37FA2BF02112E2B000739C8C /* Ingredients.swift in Sources */,
