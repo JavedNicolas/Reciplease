@@ -16,20 +16,31 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var ingredientTableView: UITableView!
 
     // --------- Attribut
-    var search = Search()
+    var ingredient = Ingredients()
+    lazy var api = YummlyAPI(yummlySession: YummlySession(endPoint: YummlyConstant.endPointForSearch))
 
     // --------- Actions
     @IBAction func add(_ sender: Any) {
         if let newIngredient = ingredientTextField.text {
-            search.addIngredient(newIngredient)
+            ingredient.addIngredient(newIngredient)
             ingredientTextField.text = ""
         }
     }
     
     @IBAction func clear(_ sender: Any) {
-        search.clearIngredientList()
+        ingredient.clearIngredientList()
     }
 
+    @IBAction func searchForRecipes(_ sender: Any) {
+        api.queryForSearchRecipes(forIngredients: ingredient.ingredientList) { (success, recipes) in
+            if success {
+                print(recipes)
+            }
+        }
+    }
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        ingredientTextField.resignFirstResponder()
+    }
     // --------- functions
 
     private func addObserverForIngredientListChange() {

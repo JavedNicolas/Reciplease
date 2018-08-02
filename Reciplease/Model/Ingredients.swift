@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Search {
+class Ingredients {
     // -------- Attribut
     var ingredientList : [String] {
         didSet {
@@ -22,10 +22,12 @@ class Search {
     }
 
     // ----------- functions
+    /** Add an ingredient to the Array */
     func addIngredient(_ ingredient : String) {
         ingredientList.append(ingredient)
     }
 
+    /** remove an ingredient from the Array*/
     func removeIngredient(_ ingredient : String ) {
         for (index, item) in ingredientList.enumerated() {
             if item == ingredient {
@@ -34,10 +36,12 @@ class Search {
         }
     }
 
+    /** empty the ingredient Array */
     func clearIngredientList() {
         ingredientList = []
     }
 
+    /** create and send a notification */
     func sendNotification(name : String) {
         let notificationName = Notification.Name(name)
         let notification = Notification(name: notificationName)

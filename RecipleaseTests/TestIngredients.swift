@@ -11,31 +11,31 @@ import XCTest
 
 class TestSearch: XCTestCase {
 
-    var search : Search!
+    var ingredients : Ingredients!
 
     override func setUp() {
         super.setUp()
-        search = Search()
+        ingredients = Ingredients()
     }
     
     func testGivenIngredientListIsEmptyWhenWeAddAnIngredientThenTheListIsNotEmpty() {
         // Given
 
         // When
-        search.addIngredient("Tomato")
+        ingredients.addIngredient("Tomato")
 
         // Then
-        XCTAssertNotEqual(search.ingredientList.count, 0)
+        XCTAssertNotEqual(ingredients.ingredientList.count, 0)
     }
 
     func testGivenIngredientListIsNotEmptyWhenWeRemoveAnIngredientThenTheIngredientAsBeenRemovedAndTheListIsOneElementShorter() {
         // Given
-        search.addIngredient("Tomato")
-        let numberOfIngredient = search.ingredientList.count
+        ingredients.addIngredient("Tomato")
+        let numberOfIngredient = ingredients.ingredientList.count
 
         // When
-        search.removeIngredient("Tomato")
-        let numberOfIngredientAfterRemove = search.ingredientList.count
+        ingredients.removeIngredient("Tomato")
+        let numberOfIngredientAfterRemove = ingredients.ingredientList.count
 
         // Then
         XCTAssertEqual(numberOfIngredientAfterRemove, numberOfIngredient - 1)
@@ -43,12 +43,12 @@ class TestSearch: XCTestCase {
 
     func testGivenIngredientListIsNotEmptyWhenWeWantToEmptyItThenTheListIsEmpty() {
         // Given
-        search.addIngredient("Tomato")
-        search.addIngredient("Bacon")
+        ingredients.addIngredient("Tomato")
+        ingredients.addIngredient("Bacon")
 
         // When
-        search.clearIngredientList()
-        let numberOfIngredient = search.ingredientList.count
+        ingredients.clearIngredientList()
+        let numberOfIngredient = ingredients.ingredientList.count
 
         // Then
         XCTAssertEqual(numberOfIngredient, 0)
