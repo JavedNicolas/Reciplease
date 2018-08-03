@@ -26,7 +26,7 @@ class YummlyAPI {
 
     }
 
-    func queryForSearchRecipes(forIngredients: [String], completionHandler: @escaping (Bool, [Recipes]?) -> ()) {
+    func queryForSearchRecipes(forIngredients: [String], completionHandler: @escaping (Bool, [Recipe]?) -> ()) {
 
         let ingredientString = createQuery(ingredients: forIngredients)
         guard let url = URL(string: yummlySession.apiUrlString + ingredientString) else {
