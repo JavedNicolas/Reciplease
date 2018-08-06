@@ -9,10 +9,10 @@
 import Foundation
 
 struct SearchQueryResult : Decodable {
-    let matches : [Recipe]?
+    let matches : [RecipeSummary]?
 }
 
-struct Recipe : Decodable {
+struct RecipeSummary : Decodable {
     let imageUrlsBySize : [String: String]?
     let recipeName : String?
     let ingredients : [String]?
@@ -20,3 +20,15 @@ struct Recipe : Decodable {
     let totalTimeInSeconds : Int?
     let rating : Int?
 }
+
+struct RecipeDetail : Decodable {
+    let yield : String?
+    let source : urls?
+    let ingredientLines : [String]?
+}
+
+struct urls : Decodable {
+    let sourceRecipeUrl: String?
+    let sourceSiteUrl : String?
+}
+

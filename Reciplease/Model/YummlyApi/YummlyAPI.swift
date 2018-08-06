@@ -22,26 +22,53 @@ class YummlyAPI {
     }
 
     // -------------- functions
-    func queryForRecipePage(){
+    func queryForRecipe(forRecipeID id: String, completionHandler: @escaping (Bool, RecipeDetail?) -> ()){
+        let url = URL(string: yummlySession.apiUrlString)!
 
-    }
-
-    func queryForSearchRecipes(forIngredients: [String], completionHandler: @escaping (Bool, [Recipe]?) -> ()) {
-
-        let ingredientString = createQuery(ingredients: forIngredients)
-        guard let url = URL(string: yummlySession.apiUrlString + ingredientString) else {
-            completionHandler(false, nil)
-            return
-        }
         task?.cancel()
         task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             DispatchQueue.main.async {
+                guard let reponse = response as? HTTPURLResponse, reponse.statusCode == 200 else {
+                    completionHandler(false, nil)
+                    return
+                }
+
                 guard let data = data, error == nil else {
                     completionHandler(false, nil)
                     return
                 }
 
+                var parsedQuery : RecipeDetail?
+                do {
+                    parsedQuery = try JSONDecoder().decode(RecipeDetail.self, from: data)
+                }catch {
+                    completionHandler(false, nil)
+                }
+
+                if let parsed = parsedQuery {
+                    completionHandler(true, parsed)
+                }else {
+                    completionHandler(false, nil)
+                }
+            }
+        })
+        task?.resume()
+    }
+
+    func queryForSearchRecipes(forIngredients: [String], completionHandler: @escaping (Bool, [RecipeSummary]?) -> ()) {
+
+        let ingredientString = createQuery(ingredients: forIngredients)
+        let url = URL(string: yummlySession.apiUrlString + ingredientString)!
+
+        task?.cancel()
+        task = session.dataTask(with: url, completionHandler: { (data, response, error) in
+            DispatchQueue.main.async {
                 guard let reponse = response as? HTTPURLResponse, reponse.statusCode == 200 else {
+                    completionHandler(false, nil)
+                    return
+                }
+
+                guard let data = data, error == nil else {
                     completionHandler(false, nil)
                     return
                 }
@@ -62,6 +89,7 @@ class YummlyAPI {
         })
         task?.resume()
     }
+
 
     private func createQuery(ingredients: [String]) -> String {
         var ingredientString = ""

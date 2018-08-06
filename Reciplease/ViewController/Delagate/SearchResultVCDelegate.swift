@@ -13,12 +13,20 @@ extension SearchResultViewController : UITableViewDelegate {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "detail") as? RecipeDetailViewController
 
-        guard let nextVC = nextViewController, let recipe = recipes else {
+        guard let nextVC = nextViewController, let recipe = recipes, let id = recipe[indexPath.row].id else {
             return indexPath
         }
 
-        nextVC.recipe = recipe[indexPath.row]
-        self.present(nextVC, animated: true, completion: nil)
+        let yummlySesson = YummlySession(endPoint: YummlyConstant.endPointForRecipe + id + "?")
+        let yummlyApi = YummlyAPI(yummlySession: yummlySesson)
+
+        yummlyApi.queryForRecipe(forRecipeID: id) { (success, recipeDetail) in
+            if success {
+                nextVC.recipe = recipe[indexPath.row]
+                nextVC.recipeDetail = recipeDetail
+                self.present(nextVC, animated: true, completion: nil)
+            }
+        }
 
         return indexPath
     }

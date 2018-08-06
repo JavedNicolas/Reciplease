@@ -14,7 +14,7 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var searchResultTableView: UITableView!
 
     // --------- attribut
-    var recipes : [Recipe]?
+    var recipes : [RecipeSummary]?
 
     // --------- Action
     @IBAction func back(_ sender: Any) {
