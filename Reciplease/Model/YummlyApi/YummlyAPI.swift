@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class YummlyAPI {
 
@@ -25,22 +26,12 @@ class YummlyAPI {
     func queryForRecipe(forRecipeID id: String, completionHandler: @escaping (Bool, RecipeDetail?) -> ()){
         let url = URL(string: yummlySession.apiUrlString)!
 
-        task?.cancel()
-        task = session.dataTask(with: url, completionHandler: { (data, response, error) in
-            DispatchQueue.main.async {
-                guard let reponse = response as? HTTPURLResponse, reponse.statusCode == 200 else {
-                    completionHandler(false, nil)
-                    return
-                }
-
-                guard let data = data, error == nil else {
-                    completionHandler(false, nil)
-                    return
-                }
-
+        Alamofire.request(url).responseJSON { (data) in
+            switch data.result {
+            case .success:
                 var parsedQuery : RecipeDetail?
                 do {
-                    parsedQuery = try JSONDecoder().decode(RecipeDetail.self, from: data)
+                    parsedQuery = try JSONDecoder().decode(RecipeDetail.self, from: data.data!)
                 }catch {
                     completionHandler(false, nil)
                 }
@@ -50,35 +41,25 @@ class YummlyAPI {
                 }else {
                     completionHandler(false, nil)
                 }
+            case .failure(let error):
+                print(error)
             }
-        })
-        task?.resume()
+        }
     }
 
     func queryForSearchRecipes(forIngredients: [String], completionHandler: @escaping (Bool, [RecipeSummary]?) -> ()) {
-
         let ingredientString = createQuery(ingredients: forIngredients)
         guard let ingredientsWithPercent = ingredientString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return
         }
         let url = URL(string: yummlySession.apiUrlString + ingredientsWithPercent)!
 
-        task?.cancel()
-        task = session.dataTask(with: url, completionHandler: { (data, response, error) in
-            DispatchQueue.main.async {
-                guard let reponse = response as? HTTPURLResponse, reponse.statusCode == 200 else {
-                    completionHandler(false, nil)
-                    return
-                }
-
-                guard let data = data, error == nil else {
-                    completionHandler(false, nil)
-                    return
-                }
-
+        Alamofire.request(url).responseJSON { (data) in
+            switch data.result {
+            case .success:
                 var parsedQuery : SearchQueryResult?
                 do {
-                    parsedQuery = try JSONDecoder().decode(SearchQueryResult.self, from: data)
+                    parsedQuery = try JSONDecoder().decode(SearchQueryResult.self, from: data.data!)
                 }catch {
                     completionHandler(false, nil)
                 }
@@ -88,9 +69,11 @@ class YummlyAPI {
                 }else {
                     completionHandler(false, nil)
                 }
+            case .failure(let error):
+                print(error)
             }
-        })
-        task?.resume()
+        }
+
     }
 
 

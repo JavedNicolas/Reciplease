@@ -24,11 +24,11 @@ class SearchViewController: UIViewController {
         if let newIngredient = ingredientTextField.text {
             let newIngredients = newIngredient.split(separator: ",")
             for ingredientToAdd in newIngredients {
-                if ingredientToAdd.first == " " {
-                    ingredient.addIngredient(String(ingredientToAdd.dropFirst()))
-                }else {
-                    ingredient.addIngredient(String(ingredientToAdd))
-                }
+                var ingredientTrimed = String(ingredientToAdd)
+                if ingredientTrimed.first == " " { ingredientTrimed = String(ingredientToAdd.dropFirst()) }
+                if ingredientTrimed.last == " " { ingredientTrimed = String(ingredientToAdd.dropLast()) }
+
+                ingredient.addIngredient(String(ingredientTrimed))
             }
             ingredientTextField.text = ""
         }
