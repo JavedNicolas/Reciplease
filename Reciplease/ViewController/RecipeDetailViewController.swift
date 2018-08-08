@@ -52,12 +52,12 @@ class RecipeDetailViewController: UIViewController {
         titleLabel.text = name
         durantionLabel.text = String(duration ) + " min"
         let rightSizeUrl = String((imageUrlString["90"]?.dropLast(5))!) + "s1200"
-        displayCorrectRating(rating)
+        ratingStackView.rating = rating
         let url = URL(string: rightSizeUrl)
         let data = try? Data(contentsOf: url!)
 
         if let data = data {
-            let image = UIImage(data: data)
+            let image = UIImage(data: data) 
             imageView.image = image
         }else {
             imageView.image = #imageLiteral(resourceName: "Recipes-Image")
@@ -65,13 +65,13 @@ class RecipeDetailViewController: UIViewController {
         ingredientTableView.reloadData()
     }
 
-    func displayCorrectRating(_ rating : Int) {
-        for image in rating..<5 {
-            if let imageView = ratingStackView.arrangedSubviews[image] as? UIImageView {
-                imageView.image = UIImage(named: "grey_rating_star")
-            }
-        }
-    }
+//    func displayCorrectRating(_ rating : Int) {
+//        for image in rating..<5 {
+//            if let imageView = ratingStackView.arrangedSubviews[image] as? UIImageView {
+//                imageView.image = UIImage(named: "grey_rating_star")
+//            }
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

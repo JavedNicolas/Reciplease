@@ -9,7 +9,15 @@
 import UIKit
 
 class Rating: UIStackView {
-    var images : [UIImageView]!
+    @IBOutlet var images : [UIImageView]!
 
-
+    var rating : Int? = nil {
+        didSet {
+            for image in images {
+                if image.tag > rating! {
+                    image.image = UIImage(named: "grey_rating_star")
+                }
+            }
+        }
+    }
 }

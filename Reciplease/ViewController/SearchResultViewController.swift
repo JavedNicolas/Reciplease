@@ -24,7 +24,6 @@ class SearchResultViewController: UIViewController {
     // --------- VC Function
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchResultTableView.rowHeight = 130
         searchResultTableView.reloadData()
     }
     override func didReceiveMemoryWarning() {

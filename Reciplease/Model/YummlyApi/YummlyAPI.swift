@@ -58,7 +58,10 @@ class YummlyAPI {
     func queryForSearchRecipes(forIngredients: [String], completionHandler: @escaping (Bool, [RecipeSummary]?) -> ()) {
 
         let ingredientString = createQuery(ingredients: forIngredients)
-        let url = URL(string: yummlySession.apiUrlString + ingredientString)!
+        guard let ingredientsWithPercent = ingredientString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            return
+        }
+        let url = URL(string: yummlySession.apiUrlString + ingredientsWithPercent)!
 
         task?.cancel()
         task = session.dataTask(with: url, completionHandler: { (data, response, error) in

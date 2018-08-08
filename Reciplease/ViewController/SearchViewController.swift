@@ -22,7 +22,14 @@ class SearchViewController: UIViewController {
     // --------- Actions
     @IBAction func add(_ sender: Any) {
         if let newIngredient = ingredientTextField.text {
-            ingredient.addIngredient(newIngredient)
+            let newIngredients = newIngredient.split(separator: ",")
+            for ingredientToAdd in newIngredients {
+                if ingredientToAdd.first == " " {
+                    ingredient.addIngredient(String(ingredientToAdd.dropFirst()))
+                }else {
+                    ingredient.addIngredient(String(ingredientToAdd))
+                }
+            }
             ingredientTextField.text = ""
         }
     }
@@ -60,6 +67,7 @@ class SearchViewController: UIViewController {
     // --------- Controller func
     override func viewDidLoad() {
         super.viewDidLoad()
+        ingredientTableView.tableFooterView = UIView()
         addObserverForIngredientListChange()
     }
 
