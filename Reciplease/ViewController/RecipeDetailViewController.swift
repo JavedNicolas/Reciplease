@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RecipeDetailViewController: UIViewController {
 
@@ -42,10 +43,8 @@ class RecipeDetailViewController: UIViewController {
     }
 
     func displayRecipe() {
-        guard let recipe = recipe, let name = recipe.recipeName,
-            let duration = recipe.totalTimeInSeconds,
-            let rating = recipe.rating,
-            let imageUrlString = recipe.imageUrlsBySize else {
+        guard let recipe = recipe, let name = recipe.recipeName, let duration = recipe.totalTimeInSeconds,
+            let rating = recipe.rating, let imageUrlString = recipe.imageUrlsBySize else {
                 return
         }
 
@@ -53,25 +52,12 @@ class RecipeDetailViewController: UIViewController {
         durantionLabel.text = String(duration ) + " min"
         let rightSizeUrl = String((imageUrlString["90"]?.dropLast(5))!) + "s1200"
         ratingStackView.rating = rating
-        let url = URL(string: rightSizeUrl)
-        let data = try? Data(contentsOf: url!)
-
-        if let data = data {
-            let image = UIImage(data: data) 
-            imageView.image = image
-        }else {
-            imageView.image = #imageLiteral(resourceName: "Recipes-Image")
+        if let url = URL(string: rightSizeUrl) {
+            imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "Recipe-Image"),
+                                  options: SDWebImageOptions.scaleDownLargeImages, completed: nil)
         }
         ingredientTableView.reloadData()
     }
-
-//    func displayCorrectRating(_ rating : Int) {
-//        for image in rating..<5 {
-//            if let imageView = ratingStackView.arrangedSubviews[image] as? UIImageView {
-//                imageView.image = UIImage(named: "grey_rating_star")
-//            }
-//        }
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

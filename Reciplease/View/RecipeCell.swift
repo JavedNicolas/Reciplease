@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RecipeCell: UITableViewCell {
 
@@ -39,14 +40,9 @@ class RecipeCell: UITableViewCell {
         self.duration?.text = String(duration / 60) + " min"
         self.rating?.text = String(rating)
         let rightSizeUrl = String((imageUrlString["90"]?.dropLast(5))!) + "s1200"
-        let url = URL(string: rightSizeUrl)
-        let data = try? Data(contentsOf: url!)
 
-        if let data = data {
-            let image = UIImage(data: data)
-            recipeImage?.image = image
-        }else {
-            recipeImage?.image = #imageLiteral(resourceName: "Recipes-Image")
+        if let url = URL(string: rightSizeUrl) {
+            recipeImage?.sd_setImage(with: url, placeholderImage: UIImage(named: "Recipe-Image"), options: SDWebImageOptions.scaleDownLargeImages, completed: nil)
         }
     }
 
