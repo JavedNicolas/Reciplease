@@ -114,7 +114,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="209" height="35"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="continue"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="HA7-KQ-ajj"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCh-3y-YuX">
                                                 <rect key="frame" x="219" y="0.0" width="81" height="35"/>
@@ -165,6 +168,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="8rJ-Kc-sve" id="eKX-hn-SRz"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="xZt-ao-ZPf"/>
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="VDF-es-Mq2">
