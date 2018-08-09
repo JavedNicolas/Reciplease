@@ -14,7 +14,7 @@
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FavoriteViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN" customClass="FavoriteView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -36,19 +36,13 @@
                                     <constraint firstItem="goP-md-pfw" firstAttribute="leading" secondItem="GNW-eu-xEH" secondAttribute="leading" id="i5J-Bw-dDI"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="liu-vv-OsQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="liu-vv-OsQ">
                                 <rect key="frame" x="0.0" y="70" width="320" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCell" rowHeight="108" id="F1I-bZ-pyQ">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="108"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F1I-bZ-pyQ" id="3zy-na-pI2">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="Ruv-kD-vee"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="so0-Dh-Nnc"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -66,6 +60,9 @@
                     <tabBarItem key="tabBarItem" title="Favorite" image="favorite_icon" id="acW-dT-cKf">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="tableView" destination="liu-vv-OsQ" id="fYt-6L-oDE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -347,9 +344,12 @@
                                             <action selector="back:" destination="pzR-SK-iM6" eventType="touchUpInside" id="dHn-9v-9IE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giK-Qk-bgT">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giK-Qk-bgT" customClass="FavoriteButton" customModule="Reciplease" customModuleProvider="target">
                                         <rect key="frame" x="266" y="2" width="44" height="46"/>
-                                        <state key="normal" image="addtoFavorite_icon"/>
+                                        <state key="normal" image="addtofavorite_icon"/>
+                                        <connections>
+                                            <action selector="favorite:" destination="fcr-Gl-MaK" eventType="touchUpInside" id="JF2-Dz-WVG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.018980031830000001" green="0.02218892984" blue="0.018987754360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -511,6 +511,7 @@
                     </view>
                     <connections>
                         <outlet property="durantionLabel" destination="QNh-x5-wNO" id="5ac-Xj-TSt"/>
+                        <outlet property="favoritebutton" destination="giK-Qk-bgT" id="9tI-8V-9Tl"/>
                         <outlet property="imageView" destination="a2Z-o1-ftM" id="Psq-cw-dzw"/>
                         <outlet property="ingredientTableView" destination="dQP-ou-FwM" id="Irw-R1-KrT"/>
                         <outlet property="ratingStackView" destination="Yid-Yv-WIt" id="WGo-Fa-ZAR"/>
@@ -542,7 +543,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addtoFavorite_icon" width="20" height="20"/>
+        <image name="addtofavorite_icon" width="20" height="20"/>
         <image name="favorite_icon" width="20" height="20"/>
         <image name="rating_start_icon" width="20" height="20"/>
         <image name="search_icon" width="20" height="20"/>

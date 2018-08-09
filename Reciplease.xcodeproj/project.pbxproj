@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3709557B211C1C5000F50274 /* SearchVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709557A211C1C5000F50274 /* SearchVCDelegate.swift */; };
+		3709557D211C276900F50274 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3709557C211C276900F50274 /* FavoriteButton.swift */; };
+		37095580211C36E600F50274 /* favoriteData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3709557E211C36E600F50274 /* favoriteData.xcdatamodeld */; };
+		37095582211C39F900F50274 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37095581211C39F900F50274 /* Favorite.swift */; };
+		37095584211C43D100F50274 /* FavoriteVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37095583211C43D100F50274 /* FavoriteVCDelegate.swift */; };
+		37095586211C440D00F50274 /* FavoriteVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37095585211C440D00F50274 /* FavoriteVCDataSource.swift */; };
 		37112B93211362AF007C1083 /* YummlyIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37112B92211362AF007C1083 /* YummlyIDs.swift */; };
 		3742BD8221143B510068D07B /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742BD8121143B510068D07B /* SearchResultViewController.swift */; };
 		3742BD8421143CA60068D07B /* SearchResultDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742BD8321143CA60068D07B /* SearchResultDataSource.swift */; };
@@ -53,6 +58,11 @@
 /* Begin PBXFileReference section */
 		2F20932DA33EB9285A9AEE68 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3709557A211C1C5000F50274 /* SearchVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCDelegate.swift; sourceTree = "<group>"; };
+		3709557C211C276900F50274 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		3709557F211C36E600F50274 /* favoriteData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = favoriteData.xcdatamodel; sourceTree = "<group>"; };
+		37095581211C39F900F50274 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		37095583211C43D100F50274 /* FavoriteVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVCDelegate.swift; sourceTree = "<group>"; };
+		37095585211C440D00F50274 /* FavoriteVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVCDataSource.swift; sourceTree = "<group>"; };
 		37112B92211362AF007C1083 /* YummlyIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YummlyIDs.swift; sourceTree = "<group>"; };
 		3742BD8121143B510068D07B /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		3742BD8321143CA60068D07B /* SearchResultDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDataSource.swift; sourceTree = "<group>"; };
@@ -123,6 +133,7 @@
 				3742BD8321143CA60068D07B /* SearchResultDataSource.swift */,
 				37FA2BF92112F4A500739C8C /* SearchVCDataSource.swift */,
 				376C0E8F21181E9800491195 /* RecipeDetailVCDataSource.swift */,
+				37095585211C440D00F50274 /* FavoriteVCDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -132,6 +143,7 @@
 			children = (
 				3742BD892114712E0068D07B /* SearchResultVCDelegate.swift */,
 				3709557A211C1C5000F50274 /* SearchVCDelegate.swift */,
+				37095583211C43D100F50274 /* FavoriteVCDelegate.swift */,
 			);
 			path = Delagate;
 			sourceTree = "<group>";
@@ -187,6 +199,8 @@
 				37FA2C052113271C00739C8C /* SupportingFiles */,
 				37FA2C16211352C000739C8C /* YummlyApi */,
 				37FA2BEF2112E2B000739C8C /* Ingredients.swift */,
+				3709557E211C36E600F50274 /* favoriteData.xcdatamodeld */,
+				37095581211C39F900F50274 /* Favorite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +225,7 @@
 				3742BD8D2114819A0068D07B /* Rating.swift */,
 				37DB8EB8211AD191000465A6 /* RecipeCell.swift */,
 				37DB8EB9211AD191000465A6 /* RecipeCell.xib */,
+				3709557C211C276900F50274 /* FavoriteButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,8 +444,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				37FA2C0B21132EE400739C8C /* YummlyAPI.swift in Sources */,
+				37095586211C440D00F50274 /* FavoriteVCDataSource.swift in Sources */,
 				37112B93211362AF007C1083 /* YummlyIDs.swift in Sources */,
 				3742BD8E2114819A0068D07B /* Rating.swift in Sources */,
+				37095580211C36E600F50274 /* favoriteData.xcdatamodeld in Sources */,
+				3709557D211C276900F50274 /* FavoriteButton.swift in Sources */,
 				37F58A812111AE380020DB93 /* SearchViewController.swift in Sources */,
 				37FA2BFA2112F4A500739C8C /* SearchVCDataSource.swift in Sources */,
 				37FA2BF02112E2B000739C8C /* Ingredients.swift in Sources */,
@@ -442,7 +460,9 @@
 				3742BD8C211471C20068D07B /* RecipeDetailViewController.swift in Sources */,
 				37F58A7F2111AE380020DB93 /* FavoriteViewController.swift in Sources */,
 				37DB8EBA211AD191000465A6 /* RecipeCell.swift in Sources */,
+				37095584211C43D100F50274 /* FavoriteVCDelegate.swift in Sources */,
 				37FA2BF42112E6EC00739C8C /* Constant.swift in Sources */,
+				37095582211C39F900F50274 /* Favorite.swift in Sources */,
 				3742BD8A2114712E0068D07B /* SearchResultVCDelegate.swift in Sources */,
 				3709557B211C1C5000F50274 /* SearchVCDelegate.swift in Sources */,
 				3742BD8221143B510068D07B /* SearchResultViewController.swift in Sources */,
@@ -720,6 +740,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3709557E211C36E600F50274 /* favoriteData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3709557F211C36E600F50274 /* favoriteData.xcdatamodel */,
+			);
+			currentVersion = 3709557F211C36E600F50274 /* favoriteData.xcdatamodel */;
+			path = favoriteData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 37F58A712111AE380020DB93 /* Project object */;
 }

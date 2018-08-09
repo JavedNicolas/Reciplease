@@ -22,9 +22,9 @@ class SearchViewController: UIViewController {
     // --------- Actions
     @IBAction func add(_ sender: Any) {
         if let newIngredient = ingredientTextField.text {
-            let newIngredients = newIngredient.split(separator: ",")
+            let newIngredients = newIngredient.components(separatedBy: ",")
             for ingredientToAdd in newIngredients {
-                var ingredientTrimed = String(ingredientToAdd)
+                var ingredientTrimed = ingredientToAdd
                 if ingredientTrimed.first == " " { ingredientTrimed = String(ingredientToAdd.dropFirst()) }
                 if ingredientTrimed.last == " " { ingredientTrimed = String(ingredientToAdd.dropLast()) }
 
