@@ -9,13 +9,14 @@
 import UIKit
 
 extension SearchResultViewController : UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         tableView.deselectRow(at: indexPath, animated: true)
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "detail") as? RecipeDetailViewController
 
         guard let nextVC = nextViewController, let recipe = recipes, let id = recipe[indexPath.row].id else {
-            return indexPath
+            return
         }
 
         let yummlySesson = YummlySession(endPoint: YummlyConstant.endPointForRecipe + id + "?")
@@ -28,9 +29,5 @@ extension SearchResultViewController : UITableViewDelegate {
                 self.present(nextVC, animated: true, completion: nil)
             }
         }
-
-        return indexPath
     }
-
-
 }

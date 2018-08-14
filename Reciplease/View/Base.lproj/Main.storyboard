@@ -327,12 +327,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-F8-hnq">
                                 <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fU4-05-IQo">
-                                        <rect key="frame" x="133" y="9" width="54" height="32.5"/>
-                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="28"/>
-                                        <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heb-Dv-Doy">
                                         <rect key="frame" x="15" y="9" width="34" height="32"/>
                                         <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="17"/>
@@ -345,7 +339,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giK-Qk-bgT" customClass="FavoriteButton" customModule="Reciplease" customModuleProvider="target">
-                                        <rect key="frame" x="266" y="2" width="44" height="46"/>
+                                        <rect key="frame" x="290" y="2" width="20" height="46"/>
                                         <state key="normal" image="addtofavorite_icon"/>
                                         <connections>
                                             <action selector="favorite:" destination="fcr-Gl-MaK" eventType="touchUpInside" id="JF2-Dz-WVG"/>
@@ -355,16 +349,12 @@
                                 <color key="backgroundColor" red="0.018980031830000001" green="0.02218892984" blue="0.018987754360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="heb-Dv-Doy" firstAttribute="leading" secondItem="ad0-F8-hnq" secondAttribute="leading" constant="15" id="2Wr-rZ-nzL"/>
-                                    <constraint firstItem="fU4-05-IQo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="heb-Dv-Doy" secondAttribute="trailing" constant="1" id="Ey9-qn-sSb"/>
                                     <constraint firstItem="giK-Qk-bgT" firstAttribute="top" secondItem="ad0-F8-hnq" secondAttribute="top" constant="2" id="HPL-U2-R7Q"/>
                                     <constraint firstItem="giK-Qk-bgT" firstAttribute="centerY" secondItem="ad0-F8-hnq" secondAttribute="centerY" id="KUv-ow-gcN"/>
                                     <constraint firstAttribute="height" constant="50" id="Phc-aw-0fF"/>
                                     <constraint firstAttribute="bottom" secondItem="giK-Qk-bgT" secondAttribute="bottom" constant="2" id="Ugm-lM-tbk"/>
-                                    <constraint firstItem="fU4-05-IQo" firstAttribute="centerX" secondItem="ad0-F8-hnq" secondAttribute="centerX" id="aad-gp-7cN"/>
-                                    <constraint firstItem="fU4-05-IQo" firstAttribute="centerY" secondItem="ad0-F8-hnq" secondAttribute="centerY" id="dzv-s9-gy5"/>
                                     <constraint firstAttribute="trailing" secondItem="giK-Qk-bgT" secondAttribute="trailing" constant="10" id="ij8-Pc-JWP"/>
                                     <constraint firstItem="heb-Dv-Doy" firstAttribute="centerY" secondItem="ad0-F8-hnq" secondAttribute="centerY" id="ms7-1f-d4W"/>
-                                    <constraint firstItem="giK-Qk-bgT" firstAttribute="leading" relation="lessThanOrEqual" secondItem="fU4-05-IQo" secondAttribute="trailing" constant="79" id="pC0-m7-EaO"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a2Z-o1-ftM">
@@ -510,7 +500,6 @@
                         <viewLayoutGuide key="safeArea" id="fud-Lh-dpN"/>
                     </view>
                     <connections>
-                        <outlet property="bigTitleLabel" destination="fU4-05-IQo" id="aKq-ix-cD6"/>
                         <outlet property="durantionLabel" destination="QNh-x5-wNO" id="5ac-Xj-TSt"/>
                         <outlet property="favoritebutton" destination="giK-Qk-bgT" id="9tI-8V-9Tl"/>
                         <outlet property="imageView" destination="a2Z-o1-ftM" id="Psq-cw-dzw"/>

@@ -16,7 +16,6 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var durantionLabel: UILabel!
     @IBOutlet weak var ingredientTableView: UITableView!
-    @IBOutlet weak var bigTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var ratingStackView: Rating!
     @IBOutlet weak var favoritebutton: FavoriteButton!
@@ -114,7 +113,6 @@ class RecipeDetailViewController: UIViewController {
         }
 
         titleLabel.text = name
-        bigTitleLabel.text = name
         durantionLabel.text = String(duration ) + " min"
         let rightSizeUrl = String((imageUrlString["90"]?.dropLast(5))!) + "s1200"
         ratingStackView.rating = rating
