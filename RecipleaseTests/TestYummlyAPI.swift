@@ -18,7 +18,7 @@ class TestYummlyAPI: XCTestCase {
     // ---------- Recipes List request test
     func testGivenWeNeedToSearchForRecipeBasedOnIngredientWhenWeMakeAResquestThenWeGetRecipes() {
         let fakeUrlSession = FakeUrlSession(data: FakeRecipeSearchData.correctData, response: FakeRecipeSearchData.reponseOK, error: nil)
-        let yummlyApi = YummlyAPI(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
+        let yummlyApi = YummlyAPIService(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
         let expectation = XCTestExpectation(description: "Wait For Queue Change")
 
         yummlyApi.queryForSearchRecipes(forIngredients: ["tomato,eggs"], completionHandler:  { success, recipes in
@@ -32,7 +32,7 @@ class TestYummlyAPI: XCTestCase {
 
     func testGivenWeNeedoSearchForRecipeBasedOnIngredientWhenWeMakeAResquestThenWeGetAnError() {
         let fakeUrlSession = FakeUrlSession(data: FakeRecipeSearchData.correctData, response: FakeRecipeSearchData.reponseOK, error: FakeRecipeSearchData.error)
-        let yummlyApi = YummlyAPI(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
+        let yummlyApi = YummlyAPIService(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
         let expectation = XCTestExpectation(description: "Wait For Queue Change")
 
         yummlyApi.queryForSearchRecipes(forIngredients: [], completionHandler:  { success, recipes in
@@ -46,7 +46,7 @@ class TestYummlyAPI: XCTestCase {
 
     func testGivenWeNeedoSearchForRecipeBasedIngredientWhenWeMakeAResquestThenWeGetAHTTPError() {
         let fakeUrlSession = FakeUrlSession(data: FakeRecipeSearchData.correctData, response: FakeRecipeSearchData.reponseKO, error: nil)
-        let yummlyApi = YummlyAPI(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
+        let yummlyApi = YummlyAPIService(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
         let expectation = XCTestExpectation(description: "Wait For Queue Change")
 
         yummlyApi.queryForSearchRecipes(forIngredients: [], completionHandler:  { success, recipes in
@@ -60,7 +60,7 @@ class TestYummlyAPI: XCTestCase {
 
     func testGivenWeNeedoSearchForRecipeBasedOnIngredientWhenWeMakeAResquestThenWeGetBadData() {
         let fakeUrlSession = FakeUrlSession(data: FakeRecipeSearchData.wrongData, response: FakeRecipeSearchData.reponseOK, error: nil)
-        let yummlyApi = YummlyAPI(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
+        let yummlyApi = YummlyAPIService(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
         let expectation = XCTestExpectation(description: "Wait For Queue Change")
 
         yummlyApi.queryForSearchRecipes(forIngredients: [], completionHandler:  { success, recipes in
@@ -75,7 +75,7 @@ class TestYummlyAPI: XCTestCase {
     // ----------------- Recipe request test
     func testGivenWeNeedARecipeWhenWeMakeAResquestThenWeGetTheRecipeDetail() {
         let fakeUrlSession = FakeUrlSession(data: FakeRecipeData.correctData, response: FakeRecipeData.reponseOK, error: nil)
-        let yummlyApi = YummlyAPI(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
+        let yummlyApi = YummlyAPIService(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
         let expectation = XCTestExpectation(description: "Wait For Queue Change")
 
         yummlyApi.queryForRecipe(forRecipeID: "id", completionHandler:  { success, recipe in
@@ -89,7 +89,7 @@ class TestYummlyAPI: XCTestCase {
 
     func testGivenWeeedARecipeWhenWeMakeAResquestThenWeGetAnError() {
         let fakeUrlSession = FakeUrlSession(data: FakeRecipeData.correctData, response: FakeRecipeData.reponseOK, error: FakeRecipeData.error)
-        let yummlyApi = YummlyAPI(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
+        let yummlyApi = YummlyAPIService(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
         let expectation = XCTestExpectation(description: "Wait For Queue Change")
 
         yummlyApi.queryForRecipe(forRecipeID: "id", completionHandler:  { success, recipe in
@@ -103,7 +103,7 @@ class TestYummlyAPI: XCTestCase {
 
     func testGivenWeNeedARecipeWhenWeMakeAResquestThenWeGetAHTTPError() {
         let fakeUrlSession = FakeUrlSession(data: FakeRecipeData.correctData, response: FakeRecipeData.reponseKO, error: nil)
-        let yummlyApi = YummlyAPI(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
+        let yummlyApi = YummlyAPIService(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
         let expectation = XCTestExpectation(description: "Wait For Queue Change")
 
         yummlyApi.queryForRecipe(forRecipeID: "id", completionHandler:  { success, recipe in
@@ -117,7 +117,7 @@ class TestYummlyAPI: XCTestCase {
 
     func testGivenWeNeedARecipeWhenWeMakeAResquestThenWeGetBadData() {
         let fakeUrlSession = FakeUrlSession(data: FakeRecipeData.wrongData, response: FakeRecipeData.reponseOK, error: nil)
-        let yummlyApi = YummlyAPI(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
+        let yummlyApi = YummlyAPIService(yummlySession: YummlySession(endPoint: "http://fakeurl.com"), session: fakeUrlSession)
         let expectation = XCTestExpectation(description: "Wait For Queue Change")
 
         yummlyApi.queryForRecipe(forRecipeID:"id", completionHandler:  { success, recipe in

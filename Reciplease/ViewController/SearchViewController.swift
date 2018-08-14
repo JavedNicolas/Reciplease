@@ -17,7 +17,7 @@ class SearchViewController: UIViewController {
 
     // --------- Attribut
     var ingredient = Ingredients()
-    lazy var api = YummlyAPI(yummlySession: YummlySession(endPoint: YummlyConstant.endPointForSearch))
+    lazy var api = YummlyAPIService(yummlySession: YummlySession(endPoint: YummlyConstant.endPointForSearch))
 
     // --------- Actions
     @IBAction func add(_ sender: Any) {

@@ -11,6 +11,7 @@ import UIKit
 extension SearchResultViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "detail") as? RecipeDetailViewController
 
         guard let nextVC = nextViewController, let recipe = recipes, let id = recipe[indexPath.row].id else {
@@ -18,7 +19,7 @@ extension SearchResultViewController : UITableViewDelegate {
         }
 
         let yummlySesson = YummlySession(endPoint: YummlyConstant.endPointForRecipe + id + "?")
-        let yummlyApi = YummlyAPI(yummlySession: yummlySesson)
+        let yummlyApi = YummlyAPIService(yummlySession: yummlySesson)
 
         yummlyApi.queryForRecipe(forRecipeID: id) { (success, recipeDetail) in
             if success {
@@ -30,4 +31,6 @@ extension SearchResultViewController : UITableViewDelegate {
 
         return indexPath
     }
+
+
 }

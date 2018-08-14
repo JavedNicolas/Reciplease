@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class YummlyAPI {
+class YummlyAPIService {
 
     // ------------- Attributs
     private var task : URLSessionDataTask?

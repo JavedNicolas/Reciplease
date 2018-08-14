@@ -19,7 +19,7 @@ extension FavoriteViewController: UITableViewDelegate {
         }
 
         let yummlySesson = YummlySession(endPoint: YummlyConstant.endPointForRecipe + id + "?")
-        let yummlyApi = YummlyAPI(yummlySession: yummlySesson)
+        let yummlyApi = YummlyAPIService(yummlySession: yummlySesson)
 
         yummlyApi.queryForRecipe(forRecipeID: id) { (success, recipeDetail) in
             if success {

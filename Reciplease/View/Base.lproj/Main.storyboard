@@ -510,6 +510,7 @@
                         <viewLayoutGuide key="safeArea" id="fud-Lh-dpN"/>
                     </view>
                     <connections>
+                        <outlet property="bigTitleLabel" destination="fU4-05-IQo" id="aKq-ix-cD6"/>
                         <outlet property="durantionLabel" destination="QNh-x5-wNO" id="5ac-Xj-TSt"/>
                         <outlet property="favoritebutton" destination="giK-Qk-bgT" id="9tI-8V-9Tl"/>
                         <outlet property="imageView" destination="a2Z-o1-ftM" id="Psq-cw-dzw"/>
