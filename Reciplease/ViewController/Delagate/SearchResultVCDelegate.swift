@@ -27,6 +27,8 @@ extension SearchResultViewController : UITableViewDelegate {
                 nextVC.recipe = recipe[indexPath.row]
                 nextVC.recipeDetail = recipeDetail
                 self.present(nextVC, animated: true, completion: nil)
+            }else {
+                self.errorHandling(error: ErrorList.unknowError)
             }
         }
     }

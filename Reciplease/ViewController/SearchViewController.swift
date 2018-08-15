@@ -40,13 +40,19 @@ class SearchViewController: UIViewController {
 
     @IBAction func searchForRecipes(_ sender: Any) {
         api.queryForSearchRecipes(forIngredients: ingredient.ingredientList) { (success, recipes) in
-            if success {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let searchResultViewController = storyboard.instantiateViewController(withIdentifier: "search_Result") as? SearchResultViewController
-                if let nextViewController = searchResultViewController {
-                    nextViewController.recipes = recipes
-                    self.present(nextViewController, animated: true, completion: nil)
+            if success{
+                if let recipes = recipes, recipes.count <= 0 {
+                    self.errorHandling(error: ErrorList.noResult)
+                }else {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let searchResultViewController = storyboard.instantiateViewController(withIdentifier: "search_Result") as? SearchResultViewController
+                    if let nextViewController = searchResultViewController {
+                        nextViewController.recipes = recipes
+                        self.present(nextViewController, animated: true, completion: nil)
+                    }
                 }
+            }else{
+                self.errorHandling(error: ErrorList.unknowError)
             }
         }
     }

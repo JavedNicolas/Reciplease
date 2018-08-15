@@ -41,8 +41,8 @@ class YummlyAPIService {
                 }else {
                     completionHandler(false, nil)
                 }
-            case .failure(let error):
-                print(error)
+            case .failure:
+                completionHandler(false, nil)
             }
         }
     }
@@ -70,7 +70,7 @@ class YummlyAPIService {
                     completionHandler(false, nil)
                 }
             case .failure(let error):
-                print(error)
+                completionHandler(false, nil)
             }
         }
 
