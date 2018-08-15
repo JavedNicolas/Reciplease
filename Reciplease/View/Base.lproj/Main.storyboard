@@ -207,13 +207,18 @@
                                     <action selector="searchForRecipes:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="FWP-BK-4lL"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XTh-jI-7TC">
+                                <rect key="frame" x="0.0" y="391" width="320" height="40"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="XTh-jI-7TC" secondAttribute="trailing" id="5ot-1E-Zf3"/>
                             <constraint firstItem="Ode-Fg-DwS" firstAttribute="top" secondItem="xeR-nG-B1M" secondAttribute="bottom" id="6oZ-Pg-5ej"/>
                             <constraint firstItem="xeR-nG-B1M" firstAttribute="top" secondItem="VDF-es-Mq2" secondAttribute="bottom" constant="10" id="9G9-2u-Ue7"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="xeR-nG-B1M" secondAttribute="trailing" id="9WV-A5-wUE"/>
+                            <constraint firstItem="XTh-jI-7TC" firstAttribute="top" secondItem="xeR-nG-B1M" secondAttribute="bottom" id="B1v-Nz-Bp9"/>
                             <constraint firstItem="XMp-hl-7TH" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="DIj-JD-1wM"/>
                             <constraint firstItem="fGH-2d-gZV" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="DpI-k2-WSC"/>
                             <constraint firstItem="xeR-nG-B1M" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="JFE-tl-97T"/>
@@ -224,7 +229,9 @@
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="fGH-2d-gZV" secondAttribute="trailing" id="aHW-tk-573"/>
                             <constraint firstItem="XMp-hl-7TH" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="bpT-r8-bxN"/>
                             <constraint firstItem="Ode-Fg-DwS" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="dhQ-Do-7mU"/>
+                            <constraint firstItem="XTh-jI-7TC" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="hLq-hi-rDP"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Ode-Fg-DwS" secondAttribute="trailing" id="i5o-np-GTk"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="XTh-jI-7TC" secondAttribute="bottom" id="jAI-GJ-3qQ"/>
                             <constraint firstItem="VDF-es-Mq2" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="10" id="mUp-3u-FeK"/>
                             <constraint firstItem="fGH-2d-gZV" firstAttribute="top" secondItem="XMp-hl-7TH" secondAttribute="bottom" id="xTf-1L-TC3"/>
                         </constraints>
@@ -235,9 +242,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="search_icon" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="XTh-jI-7TC" id="VBK-Rz-iue"/>
                         <outlet property="addIngredientButton" destination="uCh-3y-YuX" id="Gau-PB-8lc"/>
                         <outlet property="ingredientTableView" destination="xeR-nG-B1M" id="7sF-EJ-S6k"/>
                         <outlet property="ingredientTextField" destination="Rd3-O6-UAC" id="dge-81-H9V"/>
+                        <outlet property="searchButton" destination="Ode-Fg-DwS" id="uio-E1-doe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

@@ -69,7 +69,7 @@ class YummlyAPIService {
                 }else {
                     completionHandler(false, nil)
                 }
-            case .failure(let error):
+            case .failure:
                 completionHandler(false, nil)
             }
         }

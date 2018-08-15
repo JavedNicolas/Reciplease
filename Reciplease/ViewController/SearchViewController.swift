@@ -14,6 +14,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var ingredientTextField: UITextField!
     @IBOutlet weak var addIngredientButton: UIButton!
     @IBOutlet weak var ingredientTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var searchButton: UIButton!
 
     // --------- Attribut
     var ingredient = Ingredients()
@@ -39,8 +41,10 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func searchForRecipes(_ sender: Any) {
+        loading(isloading: true)
         api.queryForSearchRecipes(forIngredients: ingredient.ingredientList) { (success, recipes) in
             if success{
+                self.loading(isloading: false)
                 if let recipes = recipes, recipes.count <= 0 {
                     self.errorHandling(error: ErrorList.noResult)
                 }else {
@@ -52,6 +56,7 @@ class SearchViewController: UIViewController {
                     }
                 }
             }else{
+                self.loading(isloading: false)
                 self.errorHandling(error: ErrorList.unknowError)
             }
         }
@@ -60,10 +65,19 @@ class SearchViewController: UIViewController {
         ingredientTextField.resignFirstResponder()
     }
     // --------- functions
-
     private func addObserverForIngredientListChange() {
         let notificationName = Notification.Name(rawValue: "Ingredient List Changed")
         NotificationCenter.default.addObserver(self, selector: #selector(ingredientListChanged), name: notificationName ,object: nil)
+    }
+
+    func loading(isloading: Bool) {
+        searchButton.isHidden = isloading
+        activityIndicator.isHidden = !isloading
+        if isloading{
+            activityIndicator.startAnimating()
+        }else {
+            activityIndicator.stopAnimating()
+        }
     }
 
     @objc func ingredientListChanged() {
@@ -73,6 +87,7 @@ class SearchViewController: UIViewController {
     // --------- Controller func
     override func viewDidLoad() {
         super.viewDidLoad()
+        loading(isloading: false)
         ingredientTableView.tableFooterView = UIView()
         addObserverForIngredientListChange()
     }
