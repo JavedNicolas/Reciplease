@@ -35,8 +35,13 @@ extension FavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            removeFavorite(row: indexPath.row)
+            guard let recipes = recipeList else {
+                return
+            }
+            CoreDataManager.shared.removeFavorite(recipe: recipes[indexPath.row])
             
+            recipeList = Favorite().getAllFavorite
+            tableView.reloadData()    
         default:
             return
         }

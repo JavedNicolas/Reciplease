@@ -42,55 +42,12 @@ class RecipeDetailViewController: UIViewController {
         if let sender = sender as? FavoriteButton {
             sender.isFavorite = !sender.isFavorite
             if sender.isFavorite {
-                saveFavorite()
+                CoreDataManager.shared.saveFavorite(recipe: recipe)
             }else {
-                removeFavorite()
+                CoreDataManager.shared.removeFavorite(recipe: recipe)
             }
 
-            do {
-                try AppDelegate.viewContext.save()
-            } catch let error {
-                print(error)
-            }
         }
-    }
-
-    private func saveFavorite() {
-        guard let recipe = recipe, let name = recipe.recipeName, let duration = recipe.totalTimeInSeconds,
-            let rating = recipe.rating, let imageUrlString = recipe.imageUrlsBySize,
-            let ingredients = recipe.ingredients, let id = recipe.id else {
-                return
-        }
-
-        let favorite = Favorite(context: AppDelegate.viewContext)
-        favorite.recipeName = name
-        favorite.timeInSeconds = Int16(duration)
-        favorite.rating = Int16(rating)
-        favorite.imageUrl = String((imageUrlString["90"]?.dropLast(5))!) + "s1200"
-        favorite.ingredients = ingredients.joined(separator: ",")
-        favorite.id = id
-    }
-
-    private func removeFavorite() {
-        guard let recipe = recipe, let id = recipe.id, let favorite = getFavorite(id: id) else {
-                return
-        }
-
-        AppDelegate.viewContext.delete(favorite)
-    }
-
-    private func getFavorite(id : String ) -> Favorite?{
-        var favorite : Favorite?
-
-        let request : NSFetchRequest<Favorite> = Favorite.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id)
-        do {
-            favorite = try AppDelegate.viewContext.fetch(request).first
-        }catch {
-
-        }
-
-        return favorite
     }
 
     // ---------- VC function
@@ -101,7 +58,7 @@ class RecipeDetailViewController: UIViewController {
             return
         }
 
-        if let _ = getFavorite(id: id) {
+        if let _ = CoreDataManager.shared.getFavorite(id: id) {
             favoritebutton.isFavorite = true
         }
     }

@@ -16,16 +16,7 @@ class Favorite: NSManagedObject {
     }
 
     private func getFavorite() -> [RecipeSummary] {
-        var favorites : [Favorite]?
-
-        let request : NSFetchRequest<Favorite> = Favorite.fetchRequest()
-        do {
-            favorites = try AppDelegate.viewContext.fetch(request)
-        }catch {
-
-        }
-
-        if let favorites = favorites {
+        if let favorites = CoreDataManager.shared.getFavories() {
             return  createRecipesFromFavorite(favorites: favorites)
         }else {
             return []
