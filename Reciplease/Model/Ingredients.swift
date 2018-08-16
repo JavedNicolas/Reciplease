@@ -24,7 +24,9 @@ class Ingredients {
     // ----------- functions
     /** Add an ingredient to the Array */
     func addIngredient(_ ingredient : String) {
-        ingredientList.append(ingredient)
+        if !containOnlySpaces(text: ingredient) {
+            ingredientList.append(ingredient)
+        }
     }
 
     /** remove an ingredient from the Array*/
@@ -39,6 +41,16 @@ class Ingredients {
     /** empty the ingredient Array */
     func clearIngredientList() {
         ingredientList = []
+    }
+
+    /** check if the ingredient is only space or empty **/
+    func containOnlySpaces(text: String) -> Bool{
+        for char in text {
+            if char != " " {
+                return false
+            }
+        }
+        return true
     }
 
     /** create and send a notification */

@@ -16,6 +16,7 @@ class FavoriteViewController: UIViewController {
 
     // --------- Attribut
     internal var recipeList : [RecipeSummary]?
+    private var emptyListLabel : UILabel?
 
 
     // --------- VC function
@@ -26,6 +27,15 @@ class FavoriteViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         recipeList = Favorite().getAllFavorite
+        guard let recipeList = recipeList else {
+            return
+        }
+
+        if recipeList.count <= 0 {
+            emptyListLabelSetUp(display: true)
+        }else {
+            emptyListLabelSetUp(display: false)
+        }
         tableView.reloadData()
     }
 
@@ -34,29 +44,24 @@ class FavoriteViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
-    internal func removeFavorite(row: Int) {
-        guard let recipes = recipeList, let id = recipes[row].id else {
-            return
-        }
-
-        var favorite : Favorite?
-        let request : NSFetchRequest<Favorite> = Favorite.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id)
-        do {
-            favorite = try AppDelegate.viewContext.fetch(request).first
-        }catch {
-
-        }
-        if let favorite = favorite {
-            AppDelegate.viewContext.delete(favorite)
-            do {
-                try AppDelegate.viewContext.save()
-            } catch {
-                
+    // ----------- function
+    func emptyListLabelSetUp(display: Bool) {
+        if display {
+            let tableViewWidth = self.tableView.bounds.size.width
+            let tableViewHeight = self.tableView.bounds.size.height
+            let rect = CGRect(origin: CGPoint(x: 0, y: 0),size: CGSize(width: tableViewWidth,height: tableViewHeight))
+            emptyListLabel = UILabel(frame: rect)
+            guard let emptyLabel = emptyListLabel else {
+                return
             }
-            recipeList = Favorite().getAllFavorite
-            tableView.reloadData()
+
+            emptyLabel.text = "You don't have favorite recipes !\n To get favorite do a search and use the green star !"
+            emptyLabel.numberOfLines = 0
+            emptyLabel.textAlignment = .center
+            emptyLabel.font = UIFont(name: "Baskerville", size: 20)
+            tableView.backgroundView = emptyLabel
+        } else {
+            tableView.backgroundView = UIView()
         }
     }
 }

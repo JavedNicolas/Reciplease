@@ -38,6 +38,7 @@ class CoreDataManager {
         }
 
         AppDelegate.viewContext.delete(favorite)
+        saveContext()
     }
 
     func getFavorite(id: String) -> Favorite?{

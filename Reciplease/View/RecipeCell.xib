@@ -125,6 +125,20 @@
                                     <constraint firstAttribute="bottom" secondItem="A0B-BG-Mc3" secondAttribute="bottom" id="y8c-hu-y1p"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y74-KH-hiW">
+                                <rect key="frame" x="-20" y="0.0" width="464" height="202"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZSL-7U-jC5">
+                                        <rect key="frame" x="214" y="83" width="37" height="37"/>
+                                        <color key="color" red="0.018980031833052635" green="0.022188929840922356" blue="0.018987754359841347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ZSL-7U-jC5" firstAttribute="centerY" secondItem="Y74-KH-hiW" secondAttribute="centerY" id="IWx-xH-uJS"/>
+                                    <constraint firstItem="ZSL-7U-jC5" firstAttribute="centerX" secondItem="Y74-KH-hiW" secondAttribute="centerX" id="K3t-3w-YAd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -137,12 +151,16 @@
                             <constraint firstItem="o1n-9B-VmE" firstAttribute="leading" secondItem="pnm-xE-NUc" secondAttribute="leading" constant="-20" id="Jpf-8S-KxF"/>
                             <constraint firstItem="o1n-9B-VmE" firstAttribute="top" secondItem="pnm-xE-NUc" secondAttribute="top" id="KKY-I8-qUj"/>
                             <constraint firstAttribute="trailing" secondItem="o1n-9B-VmE" secondAttribute="trailing" constant="-20" id="Kkg-NC-76f"/>
+                            <constraint firstItem="P8D-ZZ-Tuq" firstAttribute="leading" secondItem="Y74-KH-hiW" secondAttribute="trailing" constant="-90" id="Nde-oc-3Xf"/>
                             <constraint firstItem="o1n-9B-VmE" firstAttribute="top" secondItem="pnm-xE-NUc" secondAttribute="top" id="QiS-3Y-tV2"/>
                             <constraint firstItem="eyR-nw-sSG" firstAttribute="leading" secondItem="pnm-xE-NUc" secondAttribute="leading" constant="5" id="W8Q-jr-4oU"/>
+                            <constraint firstItem="Y74-KH-hiW" firstAttribute="top" secondItem="pnm-xE-NUc" secondAttribute="top" id="WV2-Rl-UQK"/>
+                            <constraint firstAttribute="bottom" secondItem="Y74-KH-hiW" secondAttribute="bottom" id="dos-HD-zcr"/>
                             <constraint firstAttribute="bottom" secondItem="o1n-9B-VmE" secondAttribute="bottom" id="ff0-8a-Iic"/>
                             <constraint firstItem="P8D-ZZ-Tuq" firstAttribute="top" secondItem="pnm-xE-NUc" secondAttribute="top" constant="10" id="g5i-A0-N6u"/>
                             <constraint firstItem="Utb-aO-gCX" firstAttribute="leading" secondItem="pnm-xE-NUc" secondAttribute="leading" constant="10" id="g6k-0V-BYi"/>
                             <constraint firstItem="ehp-FH-ZuB" firstAttribute="top" secondItem="pnm-xE-NUc" secondAttribute="top" constant="13" id="ovk-RQ-X0w"/>
+                            <constraint firstItem="Y74-KH-hiW" firstAttribute="leading" secondItem="pnm-xE-NUc" secondAttribute="leading" constant="-20" id="p5n-AN-c41"/>
                             <constraint firstAttribute="bottom" secondItem="Utb-aO-gCX" secondAttribute="bottom" constant="7" id="rQL-jb-KUz"/>
                         </constraints>
                     </view>
@@ -156,8 +174,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityIndicator" destination="ZSL-7U-jC5" id="bAs-ui-MQt"/>
                 <outlet property="duration" destination="qRs-dH-5Pg" id="De9-Pr-XMz"/>
                 <outlet property="ingredients" destination="xa8-o5-U2l" id="RS8-rE-GdQ"/>
+                <outlet property="loadingView" destination="Y74-KH-hiW" id="gxR-n5-qLO"/>
                 <outlet property="rating" destination="uzO-c3-kIg" id="jmb-pG-qjX"/>
                 <outlet property="recipeImage" destination="o1n-9B-VmE" id="7rx-ek-EmU"/>
                 <outlet property="title" destination="6Q7-Ns-WAx" id="FXC-lW-vxf"/>

@@ -17,6 +17,8 @@ class RecipeCell: UITableViewCell {
     @IBOutlet weak var rating : UILabel?
     @IBOutlet weak var duration : UILabel?
     @IBOutlet weak var recipeImage : UIImageView?
+    @IBOutlet weak var loadingView : UIView?
+    @IBOutlet weak var activityIndicator : UIActivityIndicatorView?
 
     // -------- Attribut
     var recipe : RecipeSummary? = nil{
@@ -24,6 +26,19 @@ class RecipeCell: UITableViewCell {
             if let recipe = recipe {
                 setCell(recipe)
             }
+        }
+    }
+
+    func loading(isloading: Bool) {
+        guard let loadingView = loadingView, let activityIndicator = activityIndicator else {
+            return
+        }
+
+        loadingView.isHidden = !isloading
+        if isloading {
+            activityIndicator.startAnimating()
+        }else {
+            activityIndicator.stopAnimating()
         }
     }
 

@@ -18,7 +18,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
 
     // --------- Attribut
-    var ingredient = Ingredients()
+    internal var ingredient = Ingredients()
+    private var emptyListLabel : UILabel?
     lazy var api = YummlyAPIService(yummlySession: YummlySession(endPoint: YummlyConstant.endPointForSearch))
 
     // --------- Actions
@@ -81,6 +82,11 @@ class SearchViewController: UIViewController {
     }
 
     @objc func ingredientListChanged() {
+        if ingredient.ingredientList.count <= 0 {
+            emptyListLabelSetUp(display: true)
+        }else {
+            emptyListLabelSetUp(display: false)
+        }
         ingredientTableView.reloadData()
     }
 
@@ -89,7 +95,28 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         loading(isloading: false)
         ingredientTableView.tableFooterView = UIView()
+        emptyListLabelSetUp(display: true)
         addObserverForIngredientListChange()
+    }
+
+    func emptyListLabelSetUp(display: Bool) {
+        if display {
+            let tableViewWidth = self.ingredientTableView.bounds.size.width
+            let tableViewHeight = self.ingredientTableView.bounds.size.height
+            let rect = CGRect(origin: CGPoint(x: 0, y: 0),size: CGSize(width: tableViewWidth,height: tableViewHeight))
+            emptyListLabel = UILabel(frame: rect)
+            guard let emptyLabel = emptyListLabel else {
+                return
+            }
+
+            emptyLabel.text = "The ingredient list is empty!\n Try adding ingredient with the textfield up there, or simply launch a search without ingredient."
+            emptyLabel.numberOfLines = 0
+            emptyLabel.textAlignment = .center
+            emptyLabel.font = UIFont(name: "Baskerville", size: 20)
+            ingredientTableView.backgroundView = emptyLabel
+        } else {
+            ingredientTableView.backgroundView = UIView()
+        }
     }
 
     override func didReceiveMemoryWarning() {
