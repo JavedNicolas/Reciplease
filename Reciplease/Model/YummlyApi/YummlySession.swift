@@ -7,13 +7,20 @@
 //
 
 import Foundation
+import Alamofire
 
 class YummlySession : Yummly {
+
     // --------------- attribut
     var endPoint: String
 
     // -------------- init
     init(endPoint : String) {
         self.endPoint = endPoint
+    }
+
+    // ------------ function
+    func request(url: URL, completionHandler: @escaping (DataResponse<Any>) -> ()) {
+        Alamofire.request(url).responseJSON { data in completionHandler(data) }
     }
 }

@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct SearchQueryResult : Decodable {
+struct SearchQueryResult : Decodable, Recipe {
     let matches : [RecipeSummary]?
 }
 
-struct RecipeSummary : Decodable {
+struct RecipeSummary : Decodable, Recipe {
     let imageUrlsBySize : [String: String]?
     let recipeName : String?
     let ingredients : [String]?
@@ -21,7 +21,7 @@ struct RecipeSummary : Decodable {
     let rating : Int?
 }
 
-struct RecipeDetail : Decodable {
+struct RecipeDetail : Decodable, Recipe {
     let yield : String?
     let source : urls?
     let ingredientLines : [String]?

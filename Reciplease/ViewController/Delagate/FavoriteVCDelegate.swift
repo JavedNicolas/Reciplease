@@ -26,6 +26,7 @@ extension FavoriteViewController: UITableViewDelegate {
         let yummlyApi = YummlyAPIService(yummlySession: yummlySesson)
 
         yummlyApi.queryForRecipe(forRecipeID: id) { (success, recipeDetail) in
+
             if success {
                 nextVC.recipe = recipe[indexPath.row]
                 nextVC.recipeDetail = recipeDetail

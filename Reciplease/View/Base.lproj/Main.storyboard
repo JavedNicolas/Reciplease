@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FavoriteViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN" customClass="FavoriteView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNW-eu-xEH">
@@ -37,7 +37,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="liu-vv-OsQ">
-                                <rect key="frame" x="0.0" y="70" width="320" height="361"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="9pv-A4-QxB" id="Ruv-kD-vee"/>
@@ -47,9 +47,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GNW-eu-xEH" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="7QE-qa-twW"/>
+                            <constraint firstItem="GNW-eu-xEH" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="7QE-qa-twW"/>
                             <constraint firstItem="liu-vv-OsQ" firstAttribute="top" secondItem="GNW-eu-xEH" secondAttribute="bottom" id="ARe-QP-fTR"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="GNW-eu-xEH" secondAttribute="trailing" id="JWu-eD-42F"/>
+                            <constraint firstAttribute="trailing" secondItem="GNW-eu-xEH" secondAttribute="trailing" id="JWu-eD-42F"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="liu-vv-OsQ" secondAttribute="bottom" id="buZ-MM-YjB"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="liu-vv-OsQ" secondAttribute="trailing" id="hgz-8L-wra"/>
                             <constraint firstItem="liu-vv-OsQ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="jnh-kX-j4g"/>
@@ -73,7 +73,7 @@
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMp-hl-7TH">
@@ -142,7 +142,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-nG-B1M">
-                                <rect key="frame" x="0.0" y="220" width="320" height="171"/>
+                                <rect key="frame" x="0.0" y="220" width="320" height="259"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientListCell" textLabel="gyM-eH-O9C" rowHeight="37" style="IBUITableViewCellStyleDefault" id="SgW-wr-cGq">
@@ -194,7 +194,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ode-Fg-DwS">
-                                <rect key="frame" x="0.0" y="391" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="479" width="320" height="40"/>
                                 <color key="backgroundColor" red="0.091076336801052094" green="0.67343038320541382" blue="0.47949463129043579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Jev-Ln-b3y"/>
@@ -208,7 +208,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XTh-jI-7TC">
-                                <rect key="frame" x="0.0" y="391" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="479" width="320" height="40"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -227,7 +227,7 @@
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="VDF-es-Mq2" secondAttribute="trailing" constant="10" id="YCT-Wb-iWI"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="Ode-Fg-DwS" secondAttribute="bottom" id="ZbG-XE-nLT"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="fGH-2d-gZV" secondAttribute="trailing" id="aHW-tk-573"/>
-                            <constraint firstItem="XMp-hl-7TH" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="bpT-r8-bxN"/>
+                            <constraint firstItem="XMp-hl-7TH" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="bpT-r8-bxN"/>
                             <constraint firstItem="Ode-Fg-DwS" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="dhQ-Do-7mU"/>
                             <constraint firstItem="XTh-jI-7TC" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="hLq-hi-rDP"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Ode-Fg-DwS" secondAttribute="trailing" id="i5o-np-GTk"/>
@@ -263,11 +263,11 @@
             <objects>
                 <viewController storyboardIdentifier="search_Result" id="pzR-SK-iM6" customClass="SearchResultViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Irq-z2-N1w">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="swd-da-4Pl">
-                                <rect key="frame" x="0.0" y="70" width="320" height="410"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="pzR-SK-iM6" id="7Rn-oC-ISa"/>
@@ -307,11 +307,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ozh-gh-Rot" firstAttribute="leading" secondItem="Lva-ej-TDg" secondAttribute="leading" id="81D-z2-bZv"/>
+                            <constraint firstItem="ozh-gh-Rot" firstAttribute="leading" secondItem="Irq-z2-N1w" secondAttribute="leading" id="81D-z2-bZv"/>
                             <constraint firstItem="Lva-ej-TDg" firstAttribute="trailing" secondItem="swd-da-4Pl" secondAttribute="trailing" id="IbG-MO-imi"/>
                             <constraint firstItem="swd-da-4Pl" firstAttribute="top" secondItem="ozh-gh-Rot" secondAttribute="bottom" id="RNf-IN-7ri"/>
                             <constraint firstItem="ozh-gh-Rot" firstAttribute="top" secondItem="Lva-ej-TDg" secondAttribute="top" id="YRe-5Q-Wx7"/>
-                            <constraint firstItem="ozh-gh-Rot" firstAttribute="trailing" secondItem="Lva-ej-TDg" secondAttribute="trailing" id="dLf-XW-VmM"/>
+                            <constraint firstItem="ozh-gh-Rot" firstAttribute="trailing" secondItem="Irq-z2-N1w" secondAttribute="trailing" id="dLf-XW-VmM"/>
                             <constraint firstItem="Lva-ej-TDg" firstAttribute="bottom" secondItem="swd-da-4Pl" secondAttribute="bottom" id="kfQ-Ng-Bg4"/>
                             <constraint firstItem="swd-da-4Pl" firstAttribute="leading" secondItem="Lva-ej-TDg" secondAttribute="leading" id="n70-Yf-cpl"/>
                         </constraints>
@@ -330,7 +330,7 @@
             <objects>
                 <viewController storyboardIdentifier="detail" id="fcr-Gl-MaK" customClass="RecipeDetailViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iPq-Hd-1Nr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-F8-hnq">
@@ -363,6 +363,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Phc-aw-0fF"/>
                                     <constraint firstAttribute="bottom" secondItem="giK-Qk-bgT" secondAttribute="bottom" constant="2" id="Ugm-lM-tbk"/>
                                     <constraint firstAttribute="trailing" secondItem="giK-Qk-bgT" secondAttribute="trailing" constant="10" id="ij8-Pc-JWP"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="heb-Dv-Doy" secondAttribute="trailing" constant="20" symbolic="YES" id="le0-Mq-YBK"/>
                                     <constraint firstItem="heb-Dv-Doy" firstAttribute="centerY" secondItem="ad0-F8-hnq" secondAttribute="centerY" id="ms7-1f-d4W"/>
                                 </constraints>
                             </view>
@@ -442,7 +443,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dQP-ou-FwM">
-                                <rect key="frame" x="0.0" y="184.5" width="320" height="255.5"/>
+                                <rect key="frame" x="0.0" y="184.5" width="320" height="343.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredient" textLabel="czL-B7-S2Z" style="IBUITableViewCellStyleDefault" id="KPe-8f-mn1">
@@ -468,7 +469,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJA-5x-9TR">
-                                <rect key="frame" x="0.0" y="440" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                                 <color key="backgroundColor" red="0.091076336801052094" green="0.67343038320541382" blue="0.47949463129043579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ceu-He-PCO"/>
@@ -501,7 +502,7 @@
                             <constraint firstItem="ad0-F8-hnq" firstAttribute="top" secondItem="fud-Lh-dpN" secondAttribute="top" id="l3o-UF-GAh"/>
                             <constraint firstItem="fud-Lh-dpN" firstAttribute="bottom" secondItem="pJA-5x-9TR" secondAttribute="bottom" id="mS5-Dt-DCE"/>
                             <constraint firstItem="fud-Lh-dpN" firstAttribute="trailing" secondItem="QNh-x5-wNO" secondAttribute="trailing" constant="10" id="q2K-f4-UHG"/>
-                            <constraint firstItem="ad0-F8-hnq" firstAttribute="leading" secondItem="fud-Lh-dpN" secondAttribute="leading" id="wCw-aS-Ajk"/>
+                            <constraint firstItem="ad0-F8-hnq" firstAttribute="leading" secondItem="iPq-Hd-1Nr" secondAttribute="leading" id="wCw-aS-Ajk"/>
                             <constraint firstItem="pJA-5x-9TR" firstAttribute="leading" secondItem="fud-Lh-dpN" secondAttribute="leading" id="wgt-lv-XPb"/>
                             <constraint firstItem="fud-Lh-dpN" firstAttribute="trailing" secondItem="pEV-la-CPC" secondAttribute="trailing" constant="10" id="zKR-Kz-DIp"/>
                             <constraint firstItem="pJA-5x-9TR" firstAttribute="top" secondItem="dQP-ou-FwM" secondAttribute="bottom" id="zQa-QG-cZJ"/>

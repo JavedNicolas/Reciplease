@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol Yummly {
     var endPoint : String { get }
     var apiUrlString : String { get }
+
+    func request(url: URL, completionHandler: @escaping (DataResponse<Any>) -> ())
 }
 
 extension Yummly {

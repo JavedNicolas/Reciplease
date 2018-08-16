@@ -12,72 +12,91 @@ import Alamofire
 class YummlyAPIService {
 
     // ------------- Attributs
-    private var task : URLSessionDataTask?
-    private var session : URLSession
     private var yummlySession : YummlySession
 
     // -------------- Init
-    init(yummlySession : YummlySession ,session: URLSession = URLSession(configuration: .default)){
-        self.session = session
+    init(yummlySession : YummlySession){
         self.yummlySession = yummlySession
     }
 
     // -------------- functions
+    /**
+     Query for A precise recipe from an id
+
+    - Parameters:
+        - id : id of the recipe to retrieve
+     */
     func queryForRecipe(forRecipeID id: String, completionHandler: @escaping (Bool, RecipeDetail?) -> ()){
         let url = URL(string: yummlySession.apiUrlString)!
 
-        Alamofire.request(url).responseJSON { (data) in
-            switch data.result {
-            case .success:
-                var parsedQuery : RecipeDetail?
-                do {
-                    parsedQuery = try JSONDecoder().decode(RecipeDetail.self, from: data.data!)
-                }catch {
-                    completionHandler(false, nil)
-                }
-
-                if let parsed = parsedQuery {
-                    completionHandler(true, parsed)
-                }else {
-                    completionHandler(false, nil)
-                }
-            case .failure:
+        yummlySession.request(url: url) { data in
+            let parsedResult = self.handleAnswer(data, type: RecipeDetail.self)
+            guard let recipeDetail = parsedResult.recipe as? RecipeDetail else {
                 completionHandler(false, nil)
+                return
             }
+            completionHandler(parsedResult.success, recipeDetail)
         }
     }
 
+    /**
+     Query for recipes from ingredients
+
+     - Parameters:
+        - forIngredients : An Array of String which contains ingredient to search for.
+     */
     func queryForSearchRecipes(forIngredients: [String], completionHandler: @escaping (Bool, [RecipeSummary]?) -> ()) {
-        let ingredientString = createQuery(ingredients: forIngredients)
+        let ingredientString = createQueryFromSearch(ingredients: forIngredients)
         guard let ingredientsWithPercent = ingredientString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return
         }
         let url = URL(string: yummlySession.apiUrlString + ingredientsWithPercent)!
 
-        Alamofire.request(url).responseJSON { (data) in
-            switch data.result {
+        yummlySession.request(url: url) { data in
+            let parsedResult = self.handleAnswer(data, type: RecipeSummary.self)
+            guard let searchQueryResult = parsedResult.recipe as? SearchQueryResult else {
+                completionHandler(false, nil)
+                return
+            }
+            completionHandler(parsedResult.success, searchQueryResult.matches)
+        }
+    }
+
+    /**
+     Handler the result of the que query
+     - Parameters:
+        - data : Data from the Alamofire request request
+        - type: The type of the Recipe struct which you send (like RecipeSumary) as a Type Variable
+     - Returns:
+        success: The query ended in succes or not (a Boolean)
+        Recipe: An struct of the Recipe type which contains the parsed Data or nil
+     */
+    private func handleAnswer(_ data : DataResponse<Any>, type: Recipe.Type) -> (success :Bool, recipe: Recipe?) {
+        switch data.result {
             case .success:
-                var parsedQuery : SearchQueryResult?
+                var parsedQuery : Recipe?
                 do {
-                    parsedQuery = try JSONDecoder().decode(SearchQueryResult.self, from: data.data!)
+                    if type == RecipeDetail.self {
+                        parsedQuery = try JSONDecoder().decode(RecipeDetail.self, from: data.data!)
+                    }else if type == RecipeSummary.self {
+                        parsedQuery = try JSONDecoder().decode(SearchQueryResult.self, from: data.data!)
+                    }
                 }catch {
-                    completionHandler(false, nil)
+                    return (false, nil)
                 }
 
                 if let parsed = parsedQuery {
-                    completionHandler(true, parsed.matches)
+                    return (true, parsed)
                 }else {
-                    completionHandler(false, nil)
+                    return (false, nil)
                 }
             case .failure:
-                completionHandler(false, nil)
-            }
+                return (false, nil)
         }
-
     }
 
-
-    private func createQuery(ingredients: [String]) -> String {
+    /** create a query with the ingredient list **/
+    private func createQueryFromSearch(ingredients: [String]) -> String {
         var ingredientString = ""
         for ingredient in ingredients {
             ingredientString += YummlyConstant.ingredient + ingredient
