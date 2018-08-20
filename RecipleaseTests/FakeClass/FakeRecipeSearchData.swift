@@ -7,19 +7,32 @@
 //
 
 import Foundation
+import Alamofire
 
-class FakeRecipeSearchData {
-    static let reponseOK = HTTPURLResponse(url: URL(string: "http://fakeurl.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-    static let reponseKO = HTTPURLResponse(url: URL(string: "http://fakeurl.com")!, statusCode: 400, httpVersion: nil, headerFields: nil)
+class FakeRecipeSearchData : FakeData {
 
-    class SearchQueryError : Error {}
-    static let error = SearchQueryError()
-
-    static var correctData : Data {
+    class RecipeQueryError : Error {}
+    let error = RecipeQueryError()
+    
+    var correctData : Data {
         let url = Bundle(for: FakeRecipeSearchData.self).url(forResource: "IngredientQueryResult", withExtension: "json")
         let data = try! Data(contentsOf: url!)
         return data
     }
 
-    static let wrongData = "error".data(using: .utf8)!
+    let wrongData = "error".data(using: .utf8)!
+
+
+    func returnResponse(reponseType: ResponseType) -> FakeRequest.Reponse{
+        switch reponseType {
+        case .goodResponse:
+            return FakeRequest.Reponse(response: reponseOK, data: correctData, error: nil)
+        case .error:
+            return FakeRequest.Reponse(response: reponseOK, data: correctData, error: error)
+        case .badHttpResponse:
+            return FakeRequest.Reponse(response: reponseKO, data: correctData, error: nil)
+        case .badData:
+            return FakeRequest.Reponse(response: reponseOK, data: wrongData, error: nil)
+        }
+    }
 }

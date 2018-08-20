@@ -41,6 +41,20 @@ class TestSearch: XCTestCase {
         XCTAssertEqual(numberOfIngredientAfterRemove, numberOfIngredient - 1)
     }
 
+    func testGivenWeWantToAddAnIngredientWithOnlySpaceWhenWeAddIdThenWeTheIngredientIsNotAdded() {
+        // Given
+        ingredients.addIngredient("Tomato")
+        let numberOfIngredient = ingredients.ingredientList.count
+
+        // When
+        ingredients.addIngredient(" ")
+        let numberOfIngredientAfterOnlySpaceIngredient = ingredients.ingredientList.count
+
+        // Then
+        XCTAssertEqual(numberOfIngredient, numberOfIngredientAfterOnlySpaceIngredient)
+
+    }
+
     func testGivenIngredientListIsNotEmptyWhenWeWantToEmptyItThenTheListIsEmpty() {
         // Given
         ingredients.addIngredient("Tomato")

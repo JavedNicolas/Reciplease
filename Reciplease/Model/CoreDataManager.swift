@@ -48,8 +48,8 @@ class CoreDataManager {
         request.predicate = NSPredicate(format: "id == %@", id)
         do {
             favorite = try AppDelegate.viewContext.fetch(request).first
-        }catch let error {
-            print(error)
+        }catch {
+            return nil
         }
 
         return favorite
@@ -62,7 +62,7 @@ class CoreDataManager {
         do {
             favorites = try AppDelegate.viewContext.fetch(request)
         }catch {
-
+            return nil
         }
 
         return favorites

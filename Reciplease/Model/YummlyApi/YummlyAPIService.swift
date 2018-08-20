@@ -72,6 +72,10 @@ class YummlyAPIService {
         Recipe: An struct of the Recipe type which contains the parsed Data or nil
      */
     private func handleAnswer(_ data : DataResponse<Any>, type: Recipe.Type) -> (success :Bool, recipe: Recipe?) {
+
+        if data.response?.statusCode != 200 {
+            return (false, nil)
+        }
         switch data.result {
             case .success:
                 var parsedQuery : Recipe?

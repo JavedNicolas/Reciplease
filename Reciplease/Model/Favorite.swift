@@ -23,7 +23,7 @@ class Favorite: NSManagedObject {
         }
     }
 
-    private func createRecipesFromFavorite(favorites: [Favorite]) -> [RecipeSummary] {
+    func createRecipesFromFavorite(favorites: [Favorite]) -> [RecipeSummary] {
         var recipes : [RecipeSummary] = []
         for favorite in favorites {
             guard let imageUrl = favorite.imageUrl else {

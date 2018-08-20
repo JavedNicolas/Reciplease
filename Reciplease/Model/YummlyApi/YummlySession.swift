@@ -21,6 +21,7 @@ class YummlySession : Yummly {
 
     // ------------ function
     func request(url: URL, completionHandler: @escaping (DataResponse<Any>) -> ()) {
-        Alamofire.request(url).responseJSON { data in completionHandler(data) }
+        Alamofire.request(url).responseJSON(queue: nil, options: .allowFragments, completionHandler:
+            { (data) in completionHandler(data)})
     }
 }

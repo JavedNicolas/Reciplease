@@ -14,11 +14,13 @@
 		37095584211C43D100F50274 /* FavoriteVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37095583211C43D100F50274 /* FavoriteVCDelegate.swift */; };
 		37095586211C440D00F50274 /* FavoriteVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37095585211C440D00F50274 /* FavoriteVCDataSource.swift */; };
 		37112B93211362AF007C1083 /* YummlyIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37112B92211362AF007C1083 /* YummlyIDs.swift */; };
+		372BD1ED212ADDA5006725FA /* TestFavoriteAndCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372BD1EC212ADDA5006725FA /* TestFavoriteAndCoreData.swift */; };
 		3742BD8221143B510068D07B /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742BD8121143B510068D07B /* SearchResultViewController.swift */; };
 		3742BD8421143CA60068D07B /* SearchResultDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742BD8321143CA60068D07B /* SearchResultDataSource.swift */; };
 		3742BD8A2114712E0068D07B /* SearchResultVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742BD892114712E0068D07B /* SearchResultVCDelegate.swift */; };
 		3742BD8C211471C20068D07B /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742BD8B211471C20068D07B /* RecipeDetailViewController.swift */; };
 		3742BD8E2114819A0068D07B /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742BD8D2114819A0068D07B /* Rating.swift */; };
+		374743AE2126A27700284EE7 /* FakeYummlySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374743AD2126A27700284EE7 /* FakeYummlySession.swift */; };
 		3749FD382125A01000827811 /* RecipeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3749FD372125A01000827811 /* RecipeProtocol.swift */; };
 		376C0E9021181E9800491195 /* RecipeDetailVCDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C0E8F21181E9800491195 /* RecipeDetailVCDataSource.swift */; };
 		376C0E922118295A00491195 /* FakeRecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C0E912118295A00491195 /* FakeRecipeData.swift */; };
@@ -41,10 +43,11 @@
 		37FA2C0721132C8C00739C8C /* RecipeStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2C0621132C8C00739C8C /* RecipeStructs.swift */; };
 		37FA2C0921132D2B00739C8C /* YummlySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2C0821132D2B00739C8C /* YummlySession.swift */; };
 		37FA2C0B21132EE400739C8C /* YummlyAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2C0A21132EE400739C8C /* YummlyAPIService.swift */; };
-		37FA2C0F21133CBA00739C8C /* FakeURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2C0E21133CBA00739C8C /* FakeURLSession.swift */; };
+		37FA2C0F21133CBA00739C8C /* FakeDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2C0E21133CBA00739C8C /* FakeDataProtocol.swift */; };
 		37FA2C1121133FE200739C8C /* TestYummlyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2C1021133FE200739C8C /* TestYummlyAPI.swift */; };
 		37FA2C132113433600739C8C /* FakeRecipeSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FA2C122113433600739C8C /* FakeRecipeSearchData.swift */; };
 		37FA2C15211349C400739C8C /* IngredientQueryResult.json in Resources */ = {isa = PBXBuildFile; fileRef = 37FA2C14211349C400739C8C /* IngredientQueryResult.json */; };
+		877D3CFC4B4FEFADDBF556B4 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027A462DCCF005F583B43C42 /* Pods_RecipleaseTests.framework */; };
 		C45739837814E9AF1CC7CE85 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F20932DA33EB9285A9AEE68 /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		027A462DCCF005F583B43C42 /* Pods_RecipleaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipleaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F20932DA33EB9285A9AEE68 /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3709557A211C1C5000F50274 /* SearchVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCDelegate.swift; sourceTree = "<group>"; };
 		3709557C211C276900F50274 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
@@ -67,11 +71,13 @@
 		37095583211C43D100F50274 /* FavoriteVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVCDelegate.swift; sourceTree = "<group>"; };
 		37095585211C440D00F50274 /* FavoriteVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVCDataSource.swift; sourceTree = "<group>"; };
 		37112B92211362AF007C1083 /* YummlyIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YummlyIDs.swift; sourceTree = "<group>"; };
+		372BD1EC212ADDA5006725FA /* TestFavoriteAndCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFavoriteAndCoreData.swift; sourceTree = "<group>"; };
 		3742BD8121143B510068D07B /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		3742BD8321143CA60068D07B /* SearchResultDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDataSource.swift; sourceTree = "<group>"; };
 		3742BD892114712E0068D07B /* SearchResultVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVCDelegate.swift; sourceTree = "<group>"; };
 		3742BD8B211471C20068D07B /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		3742BD8D2114819A0068D07B /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		374743AD2126A27700284EE7 /* FakeYummlySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeYummlySession.swift; sourceTree = "<group>"; };
 		3749FD372125A01000827811 /* RecipeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeProtocol.swift; sourceTree = "<group>"; };
 		376C0E8F21181E9800491195 /* RecipeDetailVCDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailVCDataSource.swift; sourceTree = "<group>"; };
 		376C0E912118295A00491195 /* FakeRecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRecipeData.swift; sourceTree = "<group>"; };
@@ -98,12 +104,14 @@
 		37FA2C0621132C8C00739C8C /* RecipeStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStructs.swift; sourceTree = "<group>"; };
 		37FA2C0821132D2B00739C8C /* YummlySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlySession.swift; sourceTree = "<group>"; };
 		37FA2C0A21132EE400739C8C /* YummlyAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YummlyAPIService.swift; sourceTree = "<group>"; };
-		37FA2C0E21133CBA00739C8C /* FakeURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeURLSession.swift; sourceTree = "<group>"; };
+		37FA2C0E21133CBA00739C8C /* FakeDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataProtocol.swift; sourceTree = "<group>"; };
 		37FA2C1021133FE200739C8C /* TestYummlyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestYummlyAPI.swift; sourceTree = "<group>"; };
 		37FA2C122113433600739C8C /* FakeRecipeSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRecipeSearchData.swift; sourceTree = "<group>"; };
 		37FA2C14211349C400739C8C /* IngredientQueryResult.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = IngredientQueryResult.json; sourceTree = "<group>"; };
 		5872E9DA79BAC38D411E9549 /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
 		6CA5085E0665924C0D77C1E1 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
+		A534BC0A6521B728D79FF787 /* Pods-RecipleaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.release.xcconfig"; sourceTree = "<group>"; };
+		F3140899A9A0152AF316C33D /* Pods-RecipleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipleaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				877D3CFC4B4FEFADDBF556B4 /* Pods_RecipleaseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +212,7 @@
 				37F58A952111AE3A0020DB93 /* Info.plist */,
 				37FA2BF52112EEF800739C8C /* TestIngredients.swift */,
 				37FA2C1021133FE200739C8C /* TestYummlyAPI.swift */,
+				372BD1EC212ADDA5006725FA /* TestFavoriteAndCoreData.swift */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -269,9 +279,10 @@
 		37FA2C0C21133C9300739C8C /* FakeClass */ = {
 			isa = PBXGroup;
 			children = (
-				37FA2C0E21133CBA00739C8C /* FakeURLSession.swift */,
+				37FA2C0E21133CBA00739C8C /* FakeDataProtocol.swift */,
 				37FA2C122113433600739C8C /* FakeRecipeSearchData.swift */,
 				376C0E912118295A00491195 /* FakeRecipeData.swift */,
+				374743AD2126A27700284EE7 /* FakeYummlySession.swift */,
 			);
 			path = FakeClass;
 			sourceTree = "<group>";
@@ -288,8 +299,8 @@
 		37FA2C16211352C000739C8C /* YummlyApi */ = {
 			isa = PBXGroup;
 			children = (
-				37FA2C0821132D2B00739C8C /* YummlySession.swift */,
 				37FA2BF12112E2F100739C8C /* YummlyProtocole.swift */,
+				37FA2C0821132D2B00739C8C /* YummlySession.swift */,
 				37FA2C0A21132EE400739C8C /* YummlyAPIService.swift */,
 			);
 			path = YummlyApi;
@@ -300,6 +311,8 @@
 			children = (
 				6CA5085E0665924C0D77C1E1 /* Pods-Reciplease.debug.xcconfig */,
 				5872E9DA79BAC38D411E9549 /* Pods-Reciplease.release.xcconfig */,
+				F3140899A9A0152AF316C33D /* Pods-RecipleaseTests.debug.xcconfig */,
+				A534BC0A6521B728D79FF787 /* Pods-RecipleaseTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -308,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				2F20932DA33EB9285A9AEE68 /* Pods_Reciplease.framework */,
+				027A462DCCF005F583B43C42 /* Pods_RecipleaseTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -338,9 +352,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37F58A9B2111AE3A0020DB93 /* Build configuration list for PBXNativeTarget "RecipleaseTests" */;
 			buildPhases = (
+				F09F18036BEFCB1CD85EB03B /* [CP] Check Pods Manifest.lock */,
 				37F58A8B2111AE3A0020DB93 /* Sources */,
 				37F58A8C2111AE3A0020DB93 /* Frameworks */,
 				37F58A8D2111AE3A0020DB93 /* Resources */,
+				72365D1C99D07404361A5C9A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -433,6 +449,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		72365D1C99D07404361A5C9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CA9EAFBD86DC7BFF5FD01567 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,6 +487,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F09F18036BEFCB1CD85EB03B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RecipleaseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -494,11 +548,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372BD1ED212ADDA5006725FA /* TestFavoriteAndCoreData.swift in Sources */,
+				374743AE2126A27700284EE7 /* FakeYummlySession.swift in Sources */,
 				37FA2C1121133FE200739C8C /* TestYummlyAPI.swift in Sources */,
 				37FA2BF62112EEF800739C8C /* TestIngredients.swift in Sources */,
 				376C0E922118295A00491195 /* FakeRecipeData.swift in Sources */,
 				37FA2C132113433600739C8C /* FakeRecipeSearchData.swift in Sources */,
-				37FA2C0F21133CBA00739C8C /* FakeURLSession.swift in Sources */,
+				37FA2C0F21133CBA00739C8C /* FakeDataProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +742,7 @@
 		};
 		37F58A9C2111AE3A0020DB93 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3140899A9A0152AF316C33D /* Pods-RecipleaseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -709,6 +766,7 @@
 		};
 		37F58A9D2111AE3A0020DB93 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A534BC0A6521B728D79FF787 /* Pods-RecipleaseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
