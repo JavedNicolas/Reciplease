@@ -31,7 +31,7 @@ extension FavoriteViewController: UITableViewDelegate {
                 nextVC.recipe = recipe[indexPath.row]
                 nextVC.recipeDetail = recipeDetail
                 cell.loading(isloading: false)
-                self.present(nextVC, animated: true, completion: nil)
+                self.show(nextVC, sender: self)
             }else {
                 cell.loading(isloading: false)
                 self.errorHandling(error: ErrorList.unknowError)

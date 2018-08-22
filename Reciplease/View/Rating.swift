@@ -11,6 +11,7 @@ import UIKit
 class Rating: UIStackView {
     @IBOutlet var images : [UIImageView]!
 
+    /** Display correct ammout of stars for the rating **/
     var rating : Int? = nil {
         didSet {
             for image in images {

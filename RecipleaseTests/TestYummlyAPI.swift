@@ -18,10 +18,9 @@ class TestYummlyAPI: XCTestCase {
 
     // ---------- Recipes List request test
     func testGivenWeNeedToSearchForRecipeBasedOnIngredientWhenWeMakeAResquestThenWeGetRecipes() {
-        let fakeResponse = FakeRecipeSearchData().returnResponse(reponseType: ResponseType.goodResponse)
-        let fakeRequest = FakeRequest(reponse: fakeResponse)
+        let fakeResponse = FakeData(bundleName: "IngredientQueryResult").returnResponse(reponseType: ResponseType.goodResponse)
 
-        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, request: fakeRequest))
+        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, response: fakeResponse))
 
         yummlyApi.queryForSearchRecipes(forIngredients: ["tomato,eggs"], completionHandler:  { success, recipes in
             XCTAssertNotNil(recipes)
@@ -30,10 +29,9 @@ class TestYummlyAPI: XCTestCase {
     }
 
     func testGivenWeNeedoSearchForRecipeBasedOnIngredientWhenWeMakeAResquestThenWeGetAnError() {
-        let fakeResponse = FakeRecipeSearchData().returnResponse(reponseType: ResponseType.error)
-        let fakeRequest = FakeRequest(reponse: fakeResponse)
+        let fakeResponse = FakeData(bundleName: "IngredientQueryResult").returnResponse(reponseType: ResponseType.error)
 
-        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, request: fakeRequest))
+        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, response: fakeResponse))
 
         yummlyApi.queryForSearchRecipes(forIngredients: [], completionHandler:  { success, recipes in
             XCTAssertNil(recipes)
@@ -42,10 +40,9 @@ class TestYummlyAPI: XCTestCase {
     }
 
     func testGivenWeNeedoSearchForRecipeBasedIngredientWhenWeMakeAResquestThenWeGetAHTTPError() {
-        let fakeResponse = FakeRecipeSearchData().returnResponse(reponseType: ResponseType.badHttpResponse)
-        let fakeRequest = FakeRequest(reponse: fakeResponse)
+        let fakeResponse = FakeData(bundleName: "IngredientQueryResult").returnResponse(reponseType: ResponseType.badHttpResponse)
 
-        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, request: fakeRequest))
+        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, response: fakeResponse))
 
         yummlyApi.queryForSearchRecipes(forIngredients: [], completionHandler:  { success, recipes in
             XCTAssertNil(recipes)
@@ -56,10 +53,9 @@ class TestYummlyAPI: XCTestCase {
     }
 
     func testGivenWeNeedoSearchForRecipeBasedOnIngredientWhenWeMakeAResquestThenWeGetBadData() {
-        let fakeResponse = FakeRecipeSearchData().returnResponse(reponseType: ResponseType.badData)
-        let fakeRequest = FakeRequest(reponse: fakeResponse)
+        let fakeResponse = FakeData(bundleName: "IngredientQueryResult").returnResponse(reponseType: ResponseType.badData)
 
-        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, request: fakeRequest))
+        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, response: fakeResponse))
 
         yummlyApi.queryForSearchRecipes(forIngredients: [], completionHandler:  { success, recipes in
             XCTAssertNil(recipes)
@@ -69,10 +65,9 @@ class TestYummlyAPI: XCTestCase {
 
     // ----------------- Recipe request test
     func testGivenWeNeedARecipeWhenWeMakeAResquestThenWeGetTheRecipeDetail() {
-        let fakeResponse = FakeRecipeData().returnResponse(reponseType: ResponseType.goodResponse)
-        let fakeRequest = FakeRequest(reponse: fakeResponse)
+        let fakeResponse = FakeData(bundleName: "RecipeQueryResult").returnResponse(reponseType: ResponseType.goodResponse)
 
-        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, request: fakeRequest))
+        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, response: fakeResponse))
 
         yummlyApi.queryForRecipe(forRecipeID: "id", completionHandler:  { success, recipe in
             XCTAssertNotNil(recipe)
@@ -81,10 +76,10 @@ class TestYummlyAPI: XCTestCase {
     }
 
     func testGivenWeeedARecipeWhenWeMakeAResquestThenWeGetAnError() {
-        let fakeResponse = FakeRecipeData().returnResponse(reponseType: ResponseType.error)
-        let fakeRequest = FakeRequest(reponse: fakeResponse)
+        let fakeResponse = FakeData(bundleName: "RecipeQueryResult").returnResponse(reponseType: ResponseType.error)
 
-        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, request: fakeRequest))
+
+        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, response: fakeResponse))
 
         yummlyApi.queryForRecipe(forRecipeID: "id", completionHandler:  { success, recipe in
             XCTAssertNil(recipe)
@@ -93,10 +88,9 @@ class TestYummlyAPI: XCTestCase {
     }
 
     func testGivenWeNeedARecipeWhenWeMakeAResquestThenWeGetAHTTPError() {
-        let fakeResponse = FakeRecipeData().returnResponse(reponseType: ResponseType.badHttpResponse)
-        let fakeRequest = FakeRequest(reponse: fakeResponse)
+        let fakeResponse = FakeData(bundleName: "RecipeQueryResult").returnResponse(reponseType: ResponseType.badHttpResponse)
 
-        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, request: fakeRequest))
+        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, response: fakeResponse))
 
         yummlyApi.queryForRecipe(forRecipeID: "id", completionHandler:  { success, recipe in
             XCTAssertNil(recipe)
@@ -105,10 +99,9 @@ class TestYummlyAPI: XCTestCase {
     }
 
     func testGivenWeNeedARecipeWhenWeMakeAResquestThenWeGetBadData() {
-        let fakeResponse = FakeRecipeData().returnResponse(reponseType: ResponseType.badData)
-        let fakeRequest = FakeRequest(reponse: fakeResponse)
+        let fakeResponse = FakeData(bundleName: "RecipeQueryResult").returnResponse(reponseType: ResponseType.badData)
 
-        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, request: fakeRequest))
+        let yummlyApi = YummlyAPIService(yummlySession: FakeYummlySession(endPoint: YummlyConstant.endPointForSearch, response: fakeResponse))
 
         yummlyApi.queryForRecipe(forRecipeID:"id", completionHandler:  { success, recipe in
             XCTAssertNil(recipe)

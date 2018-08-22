@@ -21,6 +21,7 @@ class RecipeCell: UITableViewCell {
     @IBOutlet weak var activityIndicator : UIActivityIndicatorView?
 
     // -------- Attribut
+    /** allow to create the cell with a recipe Struct **/
     var recipe : RecipeSummary? = nil{
         didSet{
             if let recipe = recipe {
@@ -29,6 +30,7 @@ class RecipeCell: UITableViewCell {
         }
     }
 
+     /** ldisply of hide loading on the cell**/
     func loading(isloading: Bool) {
         guard let loadingView = loadingView, let activityIndicator = activityIndicator else {
             return
@@ -43,6 +45,7 @@ class RecipeCell: UITableViewCell {
     }
 
     // ---------- function
+     /** Set value in every outlet of the cell **/
     private func setCell(_ recipe : RecipeSummary) {
         guard let name = recipe.recipeName, let ingredients = recipe.ingredients?.joined(separator: ","),
             let duration = recipe.totalTimeInSeconds, let rating =  recipe.rating,

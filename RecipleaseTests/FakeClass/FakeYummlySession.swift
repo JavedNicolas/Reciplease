@@ -10,41 +10,25 @@ import Foundation
 @testable import Reciplease
 import Alamofire
 
+// ------ Fake session to avoid doing query for test
 class FakeYummlySession : YummlySession {
+    // Instance of Fake Response
+    private var response : FakeData.Reponse
 
-    private var request : FakeRequest
-
-    init(endPoint: String, request : FakeRequest) {
-        self.request = request
+    // init with an end point and a fakeReesponse
+    init(endPoint: String, response : FakeData.Reponse) {
+        self.response = response
         super.init(endPoint: endPoint)
     }
 
+    // Override of the query function so we can avoid the query and just return our fake Datas
     override func request(url: URL, completionHandler: @escaping (DataResponse<Any>) -> ()) {
-        self.request.responseJSON { (urlRequest, response, data, error) -> Void in
-            let result = Request.serializeResponseJSON(options: .allowFragments, response: response, data: data, error: error)
-            completionHandler(DataResponse(request: urlRequest, response: response, data: data, result: result))
-        }
+        let httpResponse = response.response
+        let data = response.data
+        let error = response.error
+
+        let result = Request.serializeResponseJSON(options: .allowFragments, response: httpResponse, data:data, error: error)
+        let urlRequest = URLRequest(url: URL(string: self.apiUrlString)!)
+        completionHandler(DataResponse(request: urlRequest, response: httpResponse, data: data, result: result))
     }
 }
-
-public class FakeRequest{
-
-    var reponse : Reponse
-
-    struct Reponse {
-        var response: HTTPURLResponse?
-        var data: Data?
-        var error: Error?
-    }
-
-    init(reponse : Reponse) {
-        self.reponse = reponse
-    }
-
-    public func responseJSON(completionHandler: (URLRequest, HTTPURLResponse?, Data?, Error?) -> Void) {
-
-        completionHandler(URLRequest(url: URL(string: "url.com")!), reponse.response, reponse.data, reponse.error)
-    }
-}
-
-

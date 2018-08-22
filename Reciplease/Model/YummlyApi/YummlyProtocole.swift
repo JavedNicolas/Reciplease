@@ -10,9 +10,13 @@ import Foundation
 import Alamofire
 
 protocol Yummly {
+     /** end point for the query**/
     var endPoint : String { get }
+
+    /** contains the url with endpoint, and api keys **/
     var apiUrlString : String { get }
 
+     /** the request to the Api **/
     func request(url: URL, completionHandler: @escaping (DataResponse<Any>) -> ())
 }
 

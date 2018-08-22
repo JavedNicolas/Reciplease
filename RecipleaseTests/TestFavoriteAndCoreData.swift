@@ -31,7 +31,7 @@ class TestFavoriteAndCoreData: XCTestCase {
 
     func testGivenWeWantToGetAllFavoriteWhenWeAskForThemThenWeGetAllFavorite() {
         // Given
-        let recipes = try! JSONDecoder().decode(SearchQueryResult.self, from: FakeRecipeSearchData().correctData)
+        let recipes = try! JSONDecoder().decode(SearchQueryResult.self, from: FakeData(bundleName: "IngredientQueryResult").correctData)
         CoreDataManager.shared.saveFavorite(recipe: recipes.matches?.first)
 
         // When

@@ -8,13 +8,15 @@
 
 import UIKit
 
-class FavoriteButton: UIButton {
+class FavoriteButton: UIBarButtonItem {
+    
+     /** display empty or full star to favorite or unfavorite a recipe**/
     var isFavorite : Bool = false {
         didSet {
             if isFavorite {
-                self.setImage(UIImage(named: "unfavorite_icon"), for: .normal) 
+                self.image = UIImage(named: "unfavorite_icon")
             }else {
-                self.setImage(UIImage(named: "addtofavorite_icon"), for: .normal)
+                self.image = UIImage(named: "addtofavorite_icon")
             }
         }
     }

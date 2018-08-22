@@ -53,7 +53,7 @@ class SearchViewController: UIViewController {
                     let searchResultViewController = storyboard.instantiateViewController(withIdentifier: "search_Result") as? SearchResultViewController
                     if let nextViewController = searchResultViewController {
                         nextViewController.recipes = recipes
-                        self.present(nextViewController, animated: true, completion: nil)
+                        self.show(nextViewController, sender: self)
                     }
                 }
             }else{
@@ -62,6 +62,7 @@ class SearchViewController: UIViewController {
             }
         }
     }
+
     @IBAction func dismissKeyboard(_ sender: Any) {
         ingredientTextField.resignFirstResponder()
     }

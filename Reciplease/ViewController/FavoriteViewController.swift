@@ -31,6 +31,10 @@ class FavoriteViewController: UIViewController {
             return
         }
 
+        guard let tab = self.tabBarController else {return}
+        let item = tab.tabBar.items![0]
+        item.badgeValue = nil
+
         if recipeList.count <= 0 {
             emptyListLabelSetUp(display: true)
         }else {

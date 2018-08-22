@@ -10,10 +10,14 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
+    // ---------- singleton
     static var shared = CoreDataManager()
 
+    // ---------- init
     private init() {}
 
+    // ---------- function
+     /** save a Recipe in the Favorite local database **/
     func saveFavorite(recipe: RecipeSummary?) {
         guard let recipe = recipe, let name = recipe.recipeName, let duration = recipe.totalTimeInSeconds,
             let rating = recipe.rating, let imageUrlString = recipe.imageUrlsBySize,
@@ -32,6 +36,7 @@ class CoreDataManager {
         saveContext()
     }
 
+     /** remove a Favorite recipe from the local database **/
     func removeFavorite(recipe: RecipeSummary?) {
         guard let recipe = recipe, let id = recipe.id, let favorite = getFavorite(id: id) else {
             return
@@ -41,6 +46,7 @@ class CoreDataManager {
         saveContext()
     }
 
+     /** Get a favorite from the local database with an id **/
     func getFavorite(id: String) -> Favorite?{
         var favorite : Favorite?
 
@@ -55,6 +61,7 @@ class CoreDataManager {
         return favorite
     }
 
+     /** return all favorite from the local databse **/
     func getFavories() -> [Favorite]?{
         var favorites : [Favorite]?
 
@@ -68,6 +75,7 @@ class CoreDataManager {
         return favorites
     }
 
+     /** save the context **/
     private func saveContext() {
         do {
             try AppDelegate.viewContext.save()

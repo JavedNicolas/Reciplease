@@ -9,12 +9,14 @@
 import CoreData
 
 class Favorite: NSManagedObject {
+    /** return all the favorite **/
     var getAllFavorite : [RecipeSummary]  {
         get {
             return getFavorite()
         }
     }
 
+     /** Get Favorite from local database **/
     private func getFavorite() -> [RecipeSummary] {
         if let favorites = CoreDataManager.shared.getFavories() {
             return  createRecipesFromFavorite(favorites: favorites)
@@ -23,6 +25,7 @@ class Favorite: NSManagedObject {
         }
     }
 
+     /** Turn a Favorite entity in a RecipeSummary var **/
     func createRecipesFromFavorite(favorites: [Favorite]) -> [RecipeSummary] {
         var recipes : [RecipeSummary] = []
         for favorite in favorites {

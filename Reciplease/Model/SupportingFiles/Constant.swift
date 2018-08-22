@@ -8,6 +8,7 @@
 
 import Foundation
 
+ /** Api query constant **/
 struct YummlyConstant {
     static let endPointForSearch = "https://api.yummly.com/v1/api/recipes?"
     static let endPointForRecipe = "https://api.yummly.com/v1/api/recipe/"

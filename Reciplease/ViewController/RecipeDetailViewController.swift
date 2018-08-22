@@ -18,11 +18,12 @@ class RecipeDetailViewController: UIViewController {
     @IBOutlet weak var ingredientTableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var ratingStackView: Rating!
-    @IBOutlet weak var favoritebutton: FavoriteButton!
+
 
     // --------- Attribut
     var recipe : RecipeSummary?
     var recipeDetail : RecipeDetail?
+    lazy var favoriteButton = FavoriteButton(image: UIImage(named: "addtofavorite_icon"), style: .plain, target: self, action: #selector(favorite))
 
     // --------- Action
     @IBAction func getRecipe(_ sender: Any) {
@@ -34,22 +35,6 @@ class RecipeDetailViewController: UIViewController {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
-    @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func favorite(_ sender: Any) {
-        if let sender = sender as? FavoriteButton {
-            sender.isFavorite = !sender.isFavorite
-            if sender.isFavorite {
-                CoreDataManager.shared.saveFavorite(recipe: recipe)
-            }else {
-                CoreDataManager.shared.removeFavorite(recipe: recipe)
-            }
-
-        }
-    }
-
     // ---------- VC function
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +43,31 @@ class RecipeDetailViewController: UIViewController {
             return
         }
 
+        setUpNavigationBar()
+
         if let _ = CoreDataManager.shared.getFavorite(id: id) {
-            favoritebutton.isFavorite = true
+            favoriteButton.isFavorite = true
+        }
+    }
+
+    func setUpNavigationBar() {
+        self.navigationItem.title = "Recipe Detail"
+        self.navigationItem.rightBarButtonItem = favoriteButton
+    }
+
+    @objc func favorite() {
+        favoriteButton.isFavorite = !favoriteButton.isFavorite
+
+        guard let tab = self.tabBarController else {return}
+        let item = tab.tabBar.items![0]
+        item.badgeColor = UIColor(named: "Red")
+
+        if favoriteButton.isFavorite {
+            CoreDataManager.shared.saveFavorite(recipe: recipe)
+            item.badgeValue = "New"
+        }else {
+            CoreDataManager.shared.removeFavorite(recipe: recipe)
+            item.badgeValue = nil
         }
     }
 
