@@ -16,11 +16,6 @@ class SearchResultViewController: UIViewController {
     // --------- attribut
     var recipes : [RecipeSummary]?
 
-    // --------- Action
-    @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
     // --------- VC Function
     override func viewDidLoad() {
         super.viewDidLoad()

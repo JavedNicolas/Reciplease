@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
     lazy var api = YummlyAPIService(yummlySession: YummlySession(endPoint: YummlyConstant.endPointForSearch))
 
     // --------- Actions
+    /** Action which Add and ingredient when the matching button has been pressed **/
     @IBAction func add(_ sender: Any) {
         if let newIngredient = ingredientTextField.text {
             let newIngredients = newIngredient.components(separatedBy: ",")
@@ -36,11 +37,13 @@ class SearchViewController: UIViewController {
             ingredientTextField.text = ""
         }
     }
-    
+
+    /** Clear the ingredient list **/
     @IBAction func clear(_ sender: Any) {
         ingredient.clearIngredientList()
     }
 
+    /** Launch the search query and display SearchResultViewController **/
     @IBAction func searchForRecipes(_ sender: Any) {
         loading(isloading: true)
         api.queryForSearchRecipes(forIngredients: ingredient.ingredientList) { (success, recipes) in
@@ -63,15 +66,24 @@ class SearchViewController: UIViewController {
         }
     }
 
+    /** Hide keyboard on tapping anywhere in the VC **/
     @IBAction func dismissKeyboard(_ sender: Any) {
         ingredientTextField.resignFirstResponder()
     }
+
     // --------- functions
+    /** Observe for ingredient list change **/
     private func addObserverForIngredientListChange() {
         let notificationName = Notification.Name(rawValue: "Ingredient List Changed")
         NotificationCenter.default.addObserver(self, selector: #selector(ingredientListChanged), name: notificationName ,object: nil)
     }
 
+    /**
+     Display the loading
+
+     - Parameters:
+        - isloading : A boolean to display or hide the loading
+     */
     func loading(isloading: Bool) {
         searchButton.isHidden = isloading
         activityIndicator.isHidden = !isloading
@@ -82,11 +94,25 @@ class SearchViewController: UIViewController {
         }
     }
 
+    /**
+     display the label for when the list is empty
+
+     - Parameters:
+     - display : Boolean to display of hide the label
+     */
+    func displayEmptyListLabel(display: Bool) {
+        let labelText = "The ingredient list is empty!\n Try adding ingredient with the textfield up there, or simply launch a search without ingredient."
+        let label = emptyListLabelSetUp(display: display, tableView: ingredientTableView, textToDisplay: labelText)
+
+        ingredientTableView.backgroundView = label
+    }
+
+    /** React to the ingredient list change by reloading the ingredient table view **/
     @objc func ingredientListChanged() {
         if ingredient.ingredientList.count <= 0 {
-            emptyListLabelSetUp(display: true)
+            displayEmptyListLabel(display: true)
         }else {
-            emptyListLabelSetUp(display: false)
+            displayEmptyListLabel(display: false)
         }
         ingredientTableView.reloadData()
     }
@@ -96,28 +122,8 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         loading(isloading: false)
         ingredientTableView.tableFooterView = UIView()
-        emptyListLabelSetUp(display: true)
+        displayEmptyListLabel(display: true)
         addObserverForIngredientListChange()
-    }
-
-    func emptyListLabelSetUp(display: Bool) {
-        if display {
-            let tableViewWidth = self.ingredientTableView.bounds.size.width
-            let tableViewHeight = self.ingredientTableView.bounds.size.height
-            let rect = CGRect(origin: CGPoint(x: 0, y: 0),size: CGSize(width: tableViewWidth,height: tableViewHeight))
-            emptyListLabel = UILabel(frame: rect)
-            guard let emptyLabel = emptyListLabel else {
-                return
-            }
-
-            emptyLabel.text = "The ingredient list is empty!\n Try adding ingredient with the textfield up there, or simply launch a search without ingredient."
-            emptyLabel.numberOfLines = 0
-            emptyLabel.textAlignment = .center
-            emptyLabel.font = UIFont(name: "Baskerville", size: 20)
-            ingredientTableView.backgroundView = emptyLabel
-        } else {
-            ingredientTableView.backgroundView = UIView()
-        }
     }
 
     override func didReceiveMemoryWarning() {

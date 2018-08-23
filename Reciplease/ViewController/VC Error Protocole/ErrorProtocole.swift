@@ -8,26 +8,32 @@
 
 import UIKit
 
-protocol ErrorProtocole : Error {}
-
-enum ErrorList : String, ErrorProtocole {
+/** Error enum **/
+enum ErrorList : String, Error {
     case unknowError = "An unknown error as occured. \nPlease try again later."
     case noResult = "No Result was found. \nTry to change your ingredients, or check your connection."
 }
 
+/** Error protocole to handle error**/
 protocol ErrorDelegate {
-    func errorHandling(error: ErrorProtocole)
+    func errorHandling(error: Error)
 }
 
+/** Extension of the uiviencontroller to throw error to the user **/
 extension UIViewController : ErrorDelegate {
-    func errorHandling(error: ErrorProtocole) {
+    /** throw and error to the user
+     -Parameters:
+     - error: Error of ErrorList type.
+     */
+    func errorHandling(error: Error) {
         let alert = createAlertController(error: error)
         let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(action)
         self.present(alert, animated:true, completion: nil)
     }
 
-    func createAlertController(error: ErrorProtocole) -> UIAlertController{
+    /** Create the Alert controller **/
+    func createAlertController(error: Error) -> UIAlertController{
         guard let error = error as? ErrorList else {
             print("error casting error")
             return UIAlertController()

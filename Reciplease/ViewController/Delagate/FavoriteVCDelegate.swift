@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 extension FavoriteViewController: UITableViewDelegate {
+    /** Open recipe detail when the cell has been selected **/
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -39,6 +40,7 @@ extension FavoriteViewController: UITableViewDelegate {
         }
     }
 
+    /** Allow to remove Favorite from the table view and core data **/
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
@@ -53,9 +55,9 @@ extension FavoriteViewController: UITableViewDelegate {
                 return
             }
             if recipeList.count <= 0 {
-                emptyListLabelSetUp(display: true)
+                displayEmptyListLabel(display: true)
             }else {
-                emptyListLabelSetUp(display: false)
+                displayEmptyListLabel(display: false)
             }
             
             tableView.reloadData()    

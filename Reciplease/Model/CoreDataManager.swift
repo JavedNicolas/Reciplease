@@ -12,9 +12,15 @@ import CoreData
 class CoreDataManager {
     // ---------- singleton
     static var shared = CoreDataManager()
+    private var viewContext = AppDelegate.viewContext
 
     // ---------- init
     private init() {}
+
+    /** create a different context for test **/
+    func managerForTest() {
+        viewContext = AppDelegate.persistentConainer.newBackgroundContext()
+    }
 
     // ---------- function
      /** save a Recipe in the Favorite local database **/
@@ -78,7 +84,7 @@ class CoreDataManager {
      /** save the context **/
     private func saveContext() {
         do {
-            try AppDelegate.viewContext.save()
+            try viewContext.save()
         } catch let error {
             print(error)
         }

@@ -26,6 +26,7 @@ class RecipeDetailViewController: UIViewController {
     lazy var favoriteButton = FavoriteButton(image: UIImage(named: "addtofavorite_icon"), style: .plain, target: self, action: #selector(favorite))
 
     // --------- Action
+    /** Open a Safari page with the recipe **/
     @IBAction func getRecipe(_ sender: Any) {
         guard let recipeDetail = recipeDetail, let sources = recipeDetail.source, let source = sources.sourceRecipeUrl,
             let url = URL(string: source) else {
@@ -35,26 +36,12 @@ class RecipeDetailViewController: UIViewController {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
-    // ---------- VC function
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        displayRecipe()
-        guard let recipe = recipe, let id = recipe.id else {
-            return
-        }
-
-        setUpNavigationBar()
-
-        if let _ = CoreDataManager.shared.getFavorite(id: id) {
-            favoriteButton.isFavorite = true
-        }
-    }
-
     func setUpNavigationBar() {
         self.navigationItem.title = "Recipe Detail"
         self.navigationItem.rightBarButtonItem = favoriteButton
     }
 
+    /** Handle the image favorite click by changing the image and add or remove the favorite badge **/
     @objc func favorite() {
         favoriteButton.isFavorite = !favoriteButton.isFavorite
 
@@ -71,6 +58,7 @@ class RecipeDetailViewController: UIViewController {
         }
     }
 
+    /** Display the recipe infos **/
     func displayRecipe() {
         guard let recipe = recipe, let name = recipe.recipeName, let duration = recipe.totalTimeInSeconds,
             let rating = recipe.rating, let imageUrlString = recipe.imageUrlsBySize else {
@@ -86,6 +74,21 @@ class RecipeDetailViewController: UIViewController {
                                   options: SDWebImageOptions.scaleDownLargeImages, completed: nil)
         }
         ingredientTableView.reloadData()
+    }
+
+    // ---------- VC function
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        displayRecipe()
+        guard let recipe = recipe, let id = recipe.id else {
+            return
+        }
+
+        setUpNavigationBar()
+
+        if let _ = CoreDataManager.shared.getFavorite(id: id) {
+            favoriteButton.isFavorite = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

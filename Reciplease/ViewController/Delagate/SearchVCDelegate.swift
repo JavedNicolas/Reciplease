@@ -9,6 +9,7 @@
 import UIKit
 
 extension SearchViewController : UITextFieldDelegate {
+    /** Add ingredient when the user press continue and hide the keyboard **/
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField.returnKeyType {
         case .continue:
@@ -22,6 +23,7 @@ extension SearchViewController : UITextFieldDelegate {
 }
 
 extension SearchViewController : UITableViewDelegate {
+    /** Allow user to remove ingredient individualy from the list **/
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:

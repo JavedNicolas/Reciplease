@@ -26,21 +26,25 @@ class FavoriteViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        // Get all Favorite
         recipeList = Favorite().getAllFavorite
+
         guard let recipeList = recipeList else {
             return
         }
 
+        // Display an explication label when there is no Favorite
+        if recipeList.count <= 0 {
+            displayEmptyListLabel(display: true)
+        }else {
+            displayEmptyListLabel(display: false)
+        }
+        tableView.reloadData()
+
+        // Hide the "New" badge when the viewController is displayed
         guard let tab = self.tabBarController else {return}
         let item = tab.tabBar.items![0]
         item.badgeValue = nil
-
-        if recipeList.count <= 0 {
-            emptyListLabelSetUp(display: true)
-        }else {
-            emptyListLabelSetUp(display: false)
-        }
-        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,24 +53,17 @@ class FavoriteViewController: UIViewController {
     }
 
     // ----------- function
-    func emptyListLabelSetUp(display: Bool) {
-        if display {
-            let tableViewWidth = self.tableView.bounds.size.width
-            let tableViewHeight = self.tableView.bounds.size.height
-            let rect = CGRect(origin: CGPoint(x: 0, y: 0),size: CGSize(width: tableViewWidth,height: tableViewHeight))
-            emptyListLabel = UILabel(frame: rect)
-            guard let emptyLabel = emptyListLabel else {
-                return
-            }
+    /**
+     Display the label for when the list is empty
 
-            emptyLabel.text = "You don't have favorite recipes !\n To get favorite do a search and use the green star !"
-            emptyLabel.numberOfLines = 0
-            emptyLabel.textAlignment = .center
-            emptyLabel.font = UIFont(name: "Baskerville", size: 20)
-            tableView.backgroundView = emptyLabel
-        } else {
-            tableView.backgroundView = UIView()
-        }
+     - Parameters:
+        - display : Boolean to display of hide the label
+    */
+    func displayEmptyListLabel(display: Bool) {
+        let labelText = "You don't have favorite recipes !\n To get favorite do a search and use the green star !"
+        let label = emptyListLabelSetUp(display: display, tableView: tableView, textToDisplay: labelText)
+
+        tableView.backgroundView = label
     }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 extension SearchResultViewController : UITableViewDelegate {
-
+    /** Display the Recipe Detail when a cell has been selected **/
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
